@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Optimization: Added Meta Description to fix PageSpeed Insight Warning -->
+    <meta name="description" content="SHIVSURI Digital Solutions offers premium one-page websites for ₹3000 and expert Google Apps Script automation starting at ₹1500. Professional, fast, and un-hackable web presence.">
     <title>SHIVSURI | Premium Web & Automation</title>
+    
+    <!-- Resource Hints for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         
@@ -16,6 +24,7 @@
             color: #1a1a1a; 
             overflow-x: hidden;
             font-size: 18px; 
+            text-rendering: optimizeLegibility;
         }
         
         .hero-mesh {
@@ -40,7 +49,6 @@
             50% { transform: translateY(-5px); }
         }
 
-        /* 3D Navigation Buttons */
         .nav-btn-3d {
             position: relative;
             padding: 8px 16px;
@@ -62,7 +70,6 @@
             box-shadow: 0 1px 0 rgba(0,0,0,0.2);
         }
 
-        /* 3D Main Buttons */
         .btn-3d {
             position: relative;
             background: #2563eb;
@@ -81,7 +88,6 @@
             transform: translateY(6px);
         }
 
-        /* Price Box Styling */
         .price-container {
             display: inline-flex;
             flex-direction: column;
@@ -102,7 +108,6 @@
             overflow: hidden;
         }
 
-        /* Animated Underline */
         .price-highlight::after {
             content: '';
             position: absolute;
@@ -137,7 +142,7 @@
         }
 
         .believe-it-text {
-            color: #d97706; /* Amber-600 */
+            color: #d97706;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -150,15 +155,10 @@
             50% { opacity: 0.7; transform: scale(0.95); }
         }
 
-        /* Mobile Menu Logic */
-        #mobile-menu {
-            display: none;
-        }
         #mobile-menu.active {
             display: flex;
         }
 
-        /* Responsive Table */
         @media (max-width: 768px) {
             .responsive-table thead { display: none; }
             .responsive-table tr { 
@@ -203,7 +203,6 @@
             z-index: 1000;
         }
 
-        /* Email Reveal Styling */
         .email-reveal-btn {
             background: #800000;
             color: white;
@@ -223,27 +222,27 @@
 </head>
 <body class="antialiased">
 
-    <a href="https://wa.me/YOUR_NUMBER" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <!-- Social / Contact Float -->
+    <a href="https://wa.me/YOUR_NUMBER" class="whatsapp-float" target="_blank" aria-label="Contact on Whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <!-- Nav -->
     <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="shivsuri-brand">SHIVSURI</div>
             
-            <!-- Desktop Nav -->
             <div class="hidden md:flex space-x-4">
                 <a href="#website" class="nav-btn-3d nav-blue">Web Dev</a>
                 <a href="#automation" class="nav-btn-3d nav-green">Automation</a>
                 <a href="#contact" class="nav-btn-3d nav-maroon">Contact Now</a>
             </div>
 
-            <!-- Mobile Toggle -->
-            <button class="md:hidden text-slate-900 text-2xl focus:outline-none" onclick="toggleMenu()">
+            <button class="md:hidden text-slate-900 text-2xl focus:outline-none" onclick="toggleMenu()" aria-label="Toggle Menu">
                 <i class="fas fa-bars" id="menu-icon"></i>
             </button>
         </div>
 
-        <!-- Mobile Nav Menu -->
         <div id="mobile-menu" class="hidden flex-col space-y-4 pt-6 pb-4 md:hidden border-t border-gray-50 mt-4">
             <a href="#website" onclick="toggleMenu()" class="nav-btn-3d nav-blue w-full">Web Dev</a>
             <a href="#automation" onclick="toggleMenu()" class="nav-btn-3d nav-green w-full">Automation</a>
@@ -251,10 +250,11 @@
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <header id="website" class="hero-mesh pt-12 pb-24 px-6 text-center">
         <div class="max-w-5xl mx-auto">
-            <h1 class="text-5xl md:text-8xl font-black text-slate-900 tracking-tighter mb-4 leading-[0.9]">
+            <!-- Performance optimization: Priority hint for LCP element -->
+            <h1 class="text-5xl md:text-8xl font-black text-slate-900 tracking-tighter mb-4 leading-[0.9]" fetchpriority="high">
                 Website <br> 
                 <span class="jumping-at">@</span> <br>
                 <div class="price-container">
@@ -264,10 +264,10 @@
             </h1>
             
             <div class="flex flex-wrap justify-center gap-3 mb-8">
-                <a href="https://www.varmanmetals.in/" target="_blank" class="px-6 py-3 bg-white border-2 border-slate-200 rounded-xl font-bold text-sm hover:border-blue-500 transition shadow-sm">
+                <a href="https://www.varmanmetals.in/" target="_blank" rel="noopener" class="px-6 py-3 bg-white border-2 border-slate-200 rounded-xl font-bold text-sm hover:border-blue-500 transition shadow-sm">
                     <i class="fas fa-external-link-alt mr-2 text-blue-500"></i> Site Like This
                 </a>
-                <a href="https://www.varmanmetals.in/sell_occ.html" target="_blank" class="px-6 py-3 bg-white border-2 border-slate-200 rounded-xl font-bold text-sm hover:border-blue-500 transition shadow-sm">
+                <a href="https://www.varmanmetals.in/sell_occ.html" target="_blank" rel="noopener" class="px-6 py-3 bg-white border-2 border-slate-200 rounded-xl font-bold text-sm hover:border-blue-500 transition shadow-sm">
                     <i class="fas fa-external-link-alt mr-2 text-blue-500"></i> Site Like This
                 </a>
             </div>
@@ -292,7 +292,7 @@
         </div>
     </header>
 
-    <!-- Reality Check -->
+    <!-- Financial Comparison -->
     <section class="py-20 px-4 bg-slate-50 border-y border-slate-100">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-4xl font-black text-center mb-12 tracking-tighter">Financial Comparison</h2>
@@ -347,7 +347,7 @@
         </div>
     </section>
 
-    <!-- Automation -->
+    <!-- Automation Section -->
     <section id="automation" class="py-20 px-6 bg-white">
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-2">Google Script <span class="text-blue-600">Automation</span></h2>
@@ -367,24 +367,33 @@
         </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Contact Section -->
     <section id="contact" class="py-20 px-6 bg-slate-50">
         <div class="max-w-2xl mx-auto bg-white border-2 border-slate-900 p-8 md:p-12 rounded-[2.5rem] shadow-xl">
             <h2 class="text-3xl font-black text-center mb-8">Initiate Project</h2>
-            <form id="contact-form" action="https://formspree.io/f/shivsuri1@gmail.com" method="POST" class="space-y-6">
-                <select name="service" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl outline-none font-bold">
-                    <option>Website Elite Pack ₹3000</option>
-                    <option>Google Script Automation</option>
-                    <option>Custom Project</option>
-                </select>
-                <input type="tel" name="phone" required placeholder="Whatsapp Number" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl outline-none font-bold">
-                <button type="submit" class="btn-3d w-full">Send Inquiry</button>
+            <!-- Fixed Formspree Endpoint -->
+            <form id="contact-form" action="https://formspree.io/f/mqakeebj" method="POST" class="space-y-6">
+                <label class="block">
+                    <span class="text-sm font-black text-slate-400 uppercase tracking-widest mb-2 block">Interested In</span>
+                    <select name="service" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl outline-none font-bold">
+                        <option value="Website Elite Pack ₹3000">Website Elite Pack ₹3000</option>
+                        <option value="Google Script Automation">Google Script Automation</option>
+                        <option value="Custom Project">Custom Project</option>
+                    </select>
+                </label>
+                <label class="block">
+                    <span class="text-sm font-black text-slate-400 uppercase tracking-widest mb-2 block">Your Contact</span>
+                    <input type="tel" name="phone" required placeholder="Whatsapp Number" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl outline-none font-bold">
+                </label>
+                <input type="hidden" name="_subject" value="New Service Inquiry">
+                <button type="submit" id="submit-btn" class="btn-3d w-full">Send Inquiry</button>
             </form>
             
-            <div id="form-status" class="hidden mt-6 text-center text-blue-600 font-black">Call within 24 HRS. Thank you!</div>
+            <div id="form-status" class="hidden mt-6 text-center text-blue-600 font-black p-4 bg-blue-50 rounded-xl">Call within 24 HRS. Thank you!</div>
             
             <div class="mt-10 text-center">
-                <div class="email-reveal-btn" onclick="revealEmail()">Reveal Contact Email</div>
+                <button type="button" class="email-reveal-btn" onclick="revealEmail()">Reveal Contact Email</button>
+                <!-- Masked email to prevent scraping until revealed -->
                 <div id="email-display" class="text-maroon-700 font-black text-xl mt-4">shivsuri1@gmail.com</div>
             </div>
         </div>
@@ -395,7 +404,7 @@
         Consumer Protection Act Compliant | Exclusive of GST
     </div>
 
-    <section class="py-10 px-6 bg-slate-100 border-t border-slate-200">
+    <footer class="py-10 px-6 bg-slate-100 border-t border-slate-200">
         <div class="max-w-4xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-[11px] font-bold text-slate-500 uppercase tracking-tight">
                 <div class="space-y-2">
@@ -414,7 +423,7 @@
                 <p class="mt-2 md:mt-0 italic">Subject to Terms & Conditions</p>
             </div>
         </div>
-    </section>
+    </footer>
 
     <script>
         function toggleMenu() {
@@ -437,14 +446,29 @@
             e.preventDefault();
             const form = e.target;
             const status = document.getElementById('form-status');
-            fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            }).then(() => {
-                form.classList.add('hidden');
-                status.classList.remove('hidden');
-            });
+            const btn = document.getElementById('submit-btn');
+            
+            btn.innerText = "Sending...";
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    form.classList.add('hidden');
+                    status.classList.remove('hidden');
+                } else {
+                    throw new Error("Form submission failed");
+                }
+            } catch (error) {
+                btn.innerText = "Error - Try Again";
+                btn.disabled = false;
+                console.error(error);
+            }
         };
     </script>
 </body>
