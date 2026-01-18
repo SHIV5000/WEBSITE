@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO Optimization: Added Meta Description to fix PageSpeed Insight Warning -->
-    <meta name="description" content="SHIVSURI Digital Solutions offers premium one-page websites for ₹3000 and expert Google Apps Script automation starting at ₹1500. Professional, fast, and un-hackable web presence.">
+    <meta name="description" content="SHIVSURI Digital Solutions offers premium one-page websites for ₹3000 and expert Google Apps Script automation starting at ₹1500. Professional, fast, and secured with FREE SSL.">
     <title>SHIVSURI | Premium Web & Automation</title>
     
-    <!-- Resource Hints for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
@@ -88,14 +86,6 @@
             transform: translateY(6px);
         }
 
-        .price-container {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-        }
-
         .price-highlight {
             display: inline-block;
             background: #fdf2f2;
@@ -108,25 +98,6 @@
             overflow: hidden;
         }
 
-        .price-highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 10%;
-            width: 80%;
-            height: 4px;
-            background: #800000;
-            border-radius: 2px;
-            animation: slide-line 2s ease-in-out infinite;
-        }
-
-        @keyframes slide-line {
-            0% { transform: scaleX(0); transform-origin: left; }
-            50% { transform: scaleX(1); transform-origin: left; }
-            51% { transform: scaleX(1); transform-origin: right; }
-            100% { transform: scaleX(0); transform-origin: right; }
-        }
-
         .jumping-at {
             display: inline-block;
             font-size: 3rem;
@@ -136,27 +107,15 @@
             margin-bottom: 10px;
         }
 
-        @keyframes jump {
-            from { transform: translateY(0); }
-            to { transform: translateY(-20px); }
+        @keyframes jump { from { transform: translateY(0); } to { transform: translateY(-20px); } }
+
+        @keyframes pulse-green {
+            0% { background-color: #059669; }
+            100% { background-color: #10b981; }
         }
 
-        .believe-it-text {
-            color: #d97706;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.9rem;
-            animation: pulse-soft 2s infinite;
-        }
-
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(0.95); }
-        }
-
-        #mobile-menu.active {
-            display: flex;
+        .animate-savings {
+            animation: pulse-green 1.5s infinite alternate;
         }
 
         @media (max-width: 768px) {
@@ -203,26 +162,25 @@
             z-index: 1000;
         }
 
-        .email-reveal-btn {
-            background: #800000;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 800;
-            display: inline-block;
-            transition: all 0.2s;
-            border: 2px solid #5a0000;
-            text-transform: uppercase;
-            font-size: 0.8rem;
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-weight: 900;
+            font-size: 14px;
+            margin-right: 12px;
+            box-shadow: 0 3px 0 rgba(0,0,0,0.1);
         }
-        .email-reveal-btn:hover { background: #5a0000; }
-        #email-display { display: none; }
+
+        #mobile-menu.active { display: flex; }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Social / Contact Float -->
+    <!-- Free Floating Whatsapp Button -->
     <a href="https://wa.me/YOUR_NUMBER" class="whatsapp-float" target="_blank" aria-label="Contact on Whatsapp">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -235,7 +193,7 @@
             <div class="hidden md:flex space-x-4">
                 <a href="#website" class="nav-btn-3d nav-blue">Web Dev</a>
                 <a href="#automation" class="nav-btn-3d nav-green">Automation</a>
-                <a href="#contact" class="nav-btn-3d nav-maroon">Contact Now</a>
+                <a href="#process" class="nav-btn-3d nav-maroon">Order Process</a>
             </div>
 
             <button class="md:hidden text-slate-900 text-2xl focus:outline-none" onclick="toggleMenu()" aria-label="Toggle Menu">
@@ -243,32 +201,31 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden flex-col space-y-4 pt-6 pb-4 md:hidden border-t border-gray-50 mt-4">
+        <div id="mobile-menu" class="hidden flex-col space-y-4 pt-6 pb-4 md:hidden border-t border-gray-50 mt-4 px-4">
             <a href="#website" onclick="toggleMenu()" class="nav-btn-3d nav-blue w-full">Web Dev</a>
             <a href="#automation" onclick="toggleMenu()" class="nav-btn-3d nav-green w-full">Automation</a>
-            <a href="#contact" onclick="toggleMenu()" class="nav-btn-3d nav-maroon w-full">Contact Now</a>
+            <a href="#process" onclick="toggleMenu()" class="nav-btn-3d nav-maroon w-full">Order Process</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header id="website" class="hero-mesh pt-12 pb-24 px-6 text-center">
         <div class="max-w-5xl mx-auto">
-            <!-- Performance optimization: Priority hint for LCP element -->
-            <h1 class="text-5xl md:text-8xl font-black text-slate-900 tracking-tighter mb-4 leading-[0.9]" fetchpriority="high">
+            <h1 class="text-5xl md:text-8xl font-black text-slate-900 tracking-tighter mb-4 leading-[0.9]">
                 Website <br> 
                 <span class="jumping-at">@</span> <br>
-                <div class="price-container">
+                <div class="inline-flex flex-col items-center gap-3">
                     <span class="price-highlight">₹3000</span>
-                    <span class="believe-it-text">Believe It !</span>
+                    <span class="text-amber-600 font-black uppercase text-xs tracking-widest animate-pulse">Believe It !</span>
                 </div>
             </h1>
             
             <div class="flex flex-wrap justify-center gap-3 mb-8">
                 <a href="https://www.varmanmetals.in/" target="_blank" rel="noopener" class="px-6 py-3 bg-white border-2 border-slate-200 rounded-xl font-bold text-sm hover:border-blue-500 transition shadow-sm">
-                    <i class="fas fa-external-link-alt mr-2 text-blue-500"></i> Site Like This
+                    <i class="fas fa-external-link-alt mr-2 text-blue-500"></i> Sample Site 1
                 </a>
                 <a href="https://www.varmanmetals.in/sell_occ.html" target="_blank" rel="noopener" class="px-6 py-3 bg-white border-2 border-slate-200 rounded-xl font-bold text-sm hover:border-blue-500 transition shadow-sm">
-                    <i class="fas fa-external-link-alt mr-2 text-blue-500"></i> Site Like This
+                    <i class="fas fa-external-link-alt mr-2 text-blue-500"></i> Sample Site 2
                 </a>
             </div>
 
@@ -280,11 +237,11 @@
                     <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> One page static site</li>
                     <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Hosting on Github (Free)</li>
                     <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Five tailored sections</li>
-                    <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Premium curated images</li>
+                    <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Five images (Given by you)</li>
                     <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Whatsapp integration</li>
-                    <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Strategy consultation</li>
-                    <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Two reviews (30 days)</li>
-                    <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Domain assistance</li>
+                    <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Pre-Order Discussion</li>
+                    <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Two reviews (Within 5 Days) <span class="text-green-600 font-black">FREE</span></li>
+                    <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Domain assistance <span class="text-green-600 font-black">FREE</span></li>
                 </ul>
             </div>
             
@@ -292,54 +249,59 @@
         </div>
     </header>
 
-    <!-- Financial Comparison -->
+    <!-- Comparison -->
     <section class="py-20 px-4 bg-slate-50 border-y border-slate-100">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-black text-center mb-12 tracking-tighter">Financial Comparison</h2>
+            <h2 class="text-4xl font-black text-center mb-12 tracking-tighter uppercase">Comparison</h2>
             <div class="bg-white rounded-[2rem] shadow-lg overflow-hidden border border-slate-200">
                 <table class="w-full responsive-table">
                     <thead class="bg-slate-900 text-white">
                         <tr>
                             <th class="p-6 text-left text-xs font-black uppercase tracking-widest">Parameter</th>
-                            <th class="p-6 text-center text-xs font-black uppercase tracking-widest">Others</th>
+                            <th class="p-6 text-center text-xs font-black uppercase tracking-widest">Typical Providers</th>
                             <th class="p-6 text-center text-xs font-black uppercase tracking-widest bg-blue-600">Shivsuri Elite</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100 font-bold text-sm md:text-base">
                         <tr>
-                            <td data-label="Parameter" class="p-5 text-slate-900">Dev Charges</td>
-                            <td data-label="Others" class="p-5 text-center text-red-500 line-through">₹5,000 to ₹50,000</td>
-                            <td data-label="Shivsuri Elite" class="p-5 text-center text-blue-600 bg-blue-50/50">₹3000 / 35 USD</td>
+                            <td data-label="Parameter" class="p-5 text-slate-900">Initial Setup Cost</td>
+                            <td data-label="Others" class="p-5 text-center text-red-500">₹10,000+</td>
+                            <td data-label="Shivsuri Elite" class="p-5 text-center text-blue-600 bg-blue-50/30">₹3,000</td>
                         </tr>
                         <tr>
-                            <td data-label="Parameter" class="p-5 text-slate-900">Hosting</td>
-                            <td data-label="Others" class="p-5 text-center text-red-400">₹3,000/yr onwards</td>
-                            <td data-label="Shivsuri Elite" class="p-5 text-center text-green-600 bg-blue-50/50">₹0 Free Forever</td>
+                            <td data-label="Parameter" class="p-5 text-slate-900">Yearly Hosting</td>
+                            <td data-label="Others" class="p-5 text-center text-red-500">₹5,000+</td>
+                            <td data-label="Shivsuri Elite" class="p-5 text-center text-green-600 bg-blue-50/30 font-black uppercase tracking-widest">FREE (Github)</td>
                         </tr>
                         <tr>
-                            <td data-label="Parameter" class="p-5 text-slate-900">Speed</td>
-                            <td data-label="Others" class="p-5 text-center">4-6 Sec</td>
-                            <td data-label="Shivsuri Elite" class="p-5 text-center text-blue-600 bg-blue-50/50">Under 2 Sec</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Parameter" class="p-5 text-slate-900">Security</td>
-                            <td data-label="Others" class="p-5 text-center text-slate-400">Vulnerable</td>
-                            <td data-label="Shivsuri Elite" class="p-5 text-center text-blue-600 bg-blue-50/50">Un-hackable</td>
+                            <td data-label="Parameter" class="p-5 text-slate-900">Security (SSL)</td>
+                            <td data-label="Others" class="p-5 text-center">₹1500+ / Yearly</td>
+                            <td data-label="Shivsuri Elite" class="p-5 text-center text-green-600 bg-blue-50/30 font-black uppercase tracking-widest">FREE SSL Included</td>
                         </tr>
                         <tr>
                             <td data-label="Parameter" class="p-5 text-slate-900">Maintenance</td>
-                            <td data-label="Others" class="p-5 text-center text-red-400">Paid AMC Required</td>
-                            <td data-label="Shivsuri Elite" class="p-5 text-center text-blue-600 bg-blue-50/50">Zero Maintenance</td>
+                            <td data-label="Others" class="p-5 text-center">AMC Required</td>
+                            <td data-label="Shivsuri Elite" class="p-5 text-center text-green-600 bg-blue-50/30 font-black uppercase tracking-widest">FREE (Zero AMC)</td>
                         </tr>
                         <tr>
-                            <td data-label="Parameter" class="p-5 text-slate-900">Reliability</td>
-                            <td data-label="Others" class="p-5 text-center">90% Uptime</td>
-                            <td data-label="Shivsuri Elite" class="p-5 text-center text-blue-600 bg-blue-50/50">99.9% Uptime</td>
+                            <td data-label="Parameter" class="p-5 text-slate-900">Domain Assistance</td>
+                            <td data-label="Others" class="p-5 text-center">Chargeable</td>
+                            <td data-label="Shivsuri Elite" class="p-5 text-center text-green-600 bg-blue-50/30 font-black uppercase tracking-widest">FREE Guidance</td>
                         </tr>
                         <tr>
-                            <td data-label="Parameter" class="p-5 text-slate-900">Global Accessibility</td>
-                            <td data-label="Others" class="p-5 text-center">Limited by Server</td>
-                            <td data-label="Shivsuri Elite" class="p-5 text-center text-blue-600 bg-blue-50/50">Global Edge CDN</td>
+                            <td data-label="Parameter" class="p-5 text-slate-900">Initial Reviews</td>
+                            <td data-label="Others" class="p-5 text-center">Limited</td>
+                            <td data-label="Shivsuri Elite" class="p-5 text-center text-green-600 bg-blue-50/30 font-black uppercase tracking-widest">FREE (Within 5 Days)</td>
+                        </tr>
+                        <tr class="animate-savings text-white">
+                            <td data-label="Parameter" class="p-6 uppercase tracking-[0.2em] font-black">Total Saving Impact</td>
+                            <td data-label="Others" class="p-6 text-center italic opacity-80">Recurring Expenses</td>
+                            <td data-label="Shivsuri Elite" class="p-6 text-center">
+                                <div class="flex flex-col items-center">
+                                    <span class="text-xl font-black">Yearly Saving: ₹12,000+</span>
+                                    <span class="text-xs font-black uppercase tracking-widest opacity-90 mt-1">Lifetime Impact (10y): ₹1,20,000+</span>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -351,7 +313,7 @@
     <section id="automation" class="py-20 px-6 bg-white">
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-2">Google Script <span class="text-blue-600">Automation</span></h2>
-            <p class="text-slate-600 font-bold italic mb-6">"You just Think & Share We Will Try That Automation"</p>
+            <p class="text-slate-600 font-bold italic mb-6">"You Think & Share — We Automate"</p>
             <div class="inline-block bg-red-50 text-red-700 px-8 py-3 rounded-full font-black text-lg border-2 border-dashed border-red-200 mb-12">
                 Starts ₹1500 + GST
             </div>
@@ -367,41 +329,118 @@
         </div>
     </section>
 
+    <!-- Order Process Section -->
+    <section id="process" class="py-20 px-6 bg-slate-900 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-16 text-center">Order <span class="text-blue-400">Process</span></h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Elite Website Process -->
+                <div class="bg-white/5 p-8 rounded-[2rem] border border-white/10 relative">
+                    <div class="absolute -top-6 left-8 bg-blue-600 text-white px-6 py-2 rounded-full font-black text-sm uppercase tracking-widest">🌐 Website Package</div>
+                    <ul class="mt-8 space-y-6">
+                        <li class="flex items-start">
+                            <span class="step-badge bg-blue-500 text-white">1</span>
+                            <div><p class="font-bold text-lg">Submit Your Query</p><p class="text-slate-400 text-sm">Send request via Email or WhatsApp.</p></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="step-badge bg-blue-500 text-white">2</span>
+                            <div><p class="font-bold text-lg">Requirement Discussion</p><p class="text-slate-400 text-sm">Share ideas/images. We'll send a <strong>Google Form</strong> for detail collection.</p></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="step-badge bg-blue-500 text-white">3</span>
+                            <div><p class="font-bold text-lg">Advance Payment 💰</p><p class="text-slate-400 text-sm">Transfer <strong>50%</strong> project fee to confirm order.</p></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="step-badge bg-blue-500 text-white">4</span>
+                            <div><p class="font-bold text-lg">Development Phase 🛠️</p><p class="text-slate-400 text-sm">Built & delivered within <strong>5 working days</strong>.</p></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="step-badge bg-blue-500 text-white">5</span>
+                            <div><p class="font-bold text-lg">Review & Edits ✍️</p><p class="text-slate-400 text-sm">Review & request edits (max 2 rounds) within 5 days of delivery.</p></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="step-badge bg-blue-500 text-white">6</span>
+                            <div><p class="font-bold text-lg">Final Payment 💳</p><p class="text-slate-400 text-sm">Transfer remaining balance before deployment.</p></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="step-badge bg-blue-500 text-white">7</span>
+                            <div><p class="font-bold text-lg">Hosting & Deployment 🌍</p><p class="text-slate-400 text-sm">Site hosted on your domain with full rights transfer.</p></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="step-badge bg-blue-500 text-white">8</span>
+                            <div><p class="font-bold text-lg">Closure 🤝</p><p class="text-slate-400 text-sm">Project completed with confirmation.</p></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Google Script Process -->
+                <div class="bg-white/5 p-8 rounded-[2rem] border border-white/10 relative">
+                    <div class="absolute -top-6 left-8 bg-green-600 text-white px-6 py-2 rounded-full font-black text-sm uppercase tracking-widest">⚙️ Automation Procedure</div>
+                    <ul class="mt-8 space-y-6">
+                        <li class="flex items-start">
+                            <span class="step-badge bg-green-500 text-white">1</span>
+                            <div><p class="font-bold text-lg">Submit Your Query</p><p class="text-slate-400 text-sm">Share request via Email or WhatsApp.</p></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="step-badge bg-green-500 text-white">2</span>
+                            <div><p class="font-bold text-lg">Requirement Discussion</p><p class="text-slate-400 text-sm">Provide details; <strong>Google Form</strong> sent for better clarity.</p></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="step-badge bg-green-500 text-white">3</span>
+                            <div><p class="font-bold text-lg">Advance Payment 💰</p><p class="text-slate-400 text-sm">Transfer <strong>50%</strong> to initiate development.</p></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="step-badge bg-green-500 text-white">4</span>
+                            <div><p class="font-bold text-lg">Development & Delivery 🛠️</p><p class="text-slate-400 text-sm">Installation assistance provided via <strong>AnyDesk</strong>.</p></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="step-badge bg-green-500 text-white">5</span>
+                            <div><p class="font-bold text-lg">Final Payment 💳</p><p class="text-slate-400 text-sm">Transfer balance before proceeding with final edits.</p></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="step-badge bg-green-500 text-white">6</span>
+                            <div><p class="font-bold text-lg">Review & Edits ✍️</p><p class="text-slate-400 text-sm">Request edits (max 2 rounds) within 5 days of delivery.</p></div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="step-badge bg-green-500 text-white">7</span>
+                            <div><p class="font-bold text-lg">Handover & Closure 🤝</p><p class="text-slate-400 text-sm">Final project rights transferred. Confirmation sent.</p></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-20 px-6 bg-slate-50">
         <div class="max-w-2xl mx-auto bg-white border-2 border-slate-900 p-8 md:p-12 rounded-[2.5rem] shadow-xl">
             <h2 class="text-3xl font-black text-center mb-8">Initiate Project</h2>
-            <!-- Fixed Formspree Endpoint -->
             <form id="contact-form" action="https://formspree.io/f/mqakeebj" method="POST" class="space-y-6">
                 <label class="block">
-                    <span class="text-sm font-black text-slate-400 uppercase tracking-widest mb-2 block">Interested In</span>
+                    <span class="text-sm font-black text-slate-400 uppercase tracking-widest mb-2 block">Service Required</span>
                     <select name="service" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl outline-none font-bold">
                         <option value="Website Elite Pack ₹3000">Website Elite Pack ₹3000</option>
                         <option value="Google Script Automation">Google Script Automation</option>
-                        <option value="Custom Project">Custom Project</option>
                     </select>
                 </label>
                 <label class="block">
-                    <span class="text-sm font-black text-slate-400 uppercase tracking-widest mb-2 block">Your Contact</span>
-                    <input type="tel" name="phone" required placeholder="Whatsapp Number" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl outline-none font-bold">
+                    <span class="text-sm font-black text-slate-400 uppercase tracking-widest mb-2 block">Whatsapp / Phone</span>
+                    <input type="tel" name="phone" required placeholder="Contact Number" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl outline-none font-bold">
                 </label>
-                <input type="hidden" name="_subject" value="New Service Inquiry">
                 <button type="submit" id="submit-btn" class="btn-3d w-full">Send Inquiry</button>
             </form>
-            
-            <div id="form-status" class="hidden mt-6 text-center text-blue-600 font-black p-4 bg-blue-50 rounded-xl">Call within 24 HRS. Thank you!</div>
-            
+            <div id="form-status" class="hidden mt-6 text-center text-blue-600 font-black p-4 bg-blue-50 rounded-xl uppercase text-xs">Response within 24 HRS. Thank you!</div>
             <div class="mt-10 text-center">
-                <button type="button" class="email-reveal-btn" onclick="revealEmail()">Reveal Contact Email</button>
-                <!-- Masked email to prevent scraping until revealed -->
-                <div id="email-display" class="text-maroon-700 font-black text-xl mt-4">shivsuri1@gmail.com</div>
+                <p class="text-slate-400 font-bold text-xs uppercase mb-4 tracking-widest">Or Reach Directly</p>
+                <div class="text-maroon-700 font-black text-xl">shivsuri1@gmail.com</div>
             </div>
         </div>
     </section>
 
     <!-- Footer / Legal -->
     <div class="bg-slate-200 py-3 text-[9px] text-center font-bold text-slate-500 uppercase tracking-[0.2em]">
-        Consumer Protection Act Compliant | Exclusive of GST
+        Consumer Protection Act Compliant | Rates May Change Without Prior Notice | Exclusive of GST
     </div>
 
     <footer class="py-10 px-6 bg-slate-100 border-t border-slate-200">
@@ -409,18 +448,17 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-[11px] font-bold text-slate-500 uppercase tracking-tight">
                 <div class="space-y-2">
                     <p>1. Static site only for Elite Pack.</p>
-                    <p>2. 50% deposit to start work.</p>
-                    <p>3. Timelines shared post-consultation.</p>
+                    <p>2. 50% deposit to initiate project.</p>
+                    <p>3. Timelines are subject to clarity of brief.</p>
                 </div>
                 <div class="space-y-2">
                     <p>4. Non-refundable once work begins.</p>
-                    <p>5. Indian Jurisdiction only.</p>
-                    <p>6. Standards: Professional world-class.</p>
+                    <p>5. Rates & terms subject to change without notice.</p>
+                    <p>6. Standards: World-class professionalism.</p>
                 </div>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-400 font-black">
-                <p>© SHIVSURI DIGITAL SOLUTIONS</p>
-                <p class="mt-2 md:mt-0 italic">Subject to Terms & Conditions</p>
+            <div class="mt-6 pt-4 border-t border-slate-200 text-center text-[10px] text-slate-400 font-black uppercase tracking-widest">
+                © SHIVSURI DIGITAL SOLUTIONS | Professional Digital Excellence
             </div>
         </div>
     </footer>
@@ -435,39 +473,26 @@
             icon.classList.toggle('fa-times');
         }
 
-        function revealEmail() {
-            const display = document.getElementById('email-display');
-            const btn = document.querySelector('.email-reveal-btn');
-            display.style.display = 'block';
-            btn.style.display = 'none';
-        }
-
         document.getElementById('contact-form').onsubmit = async (e) => {
             e.preventDefault();
             const form = e.target;
             const status = document.getElementById('form-status');
             const btn = document.getElementById('submit-btn');
-            
             btn.innerText = "Sending...";
             btn.disabled = true;
-
             try {
                 const response = await fetch(form.action, {
                     method: 'POST',
                     body: new FormData(form),
                     headers: { 'Accept': 'application/json' }
                 });
-
                 if (response.ok) {
                     form.classList.add('hidden');
                     status.classList.remove('hidden');
-                } else {
-                    throw new Error("Form submission failed");
                 }
             } catch (error) {
                 btn.innerText = "Error - Try Again";
                 btn.disabled = false;
-                console.error(error);
             }
         };
     </script>
