@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>|| Varman Metals || OCC 11 & OCC 12 Waste Paper IMPORTER</title>
     <meta name="description" content="Leading supplier of wholesale US Origin OCC 11 and OCC 12 waste paper. Premium quality, competitive pricing, global sourcing.">
     
-    <!-- Tailwind CSS -->
+    <!-- Load Tailwind (for styling details) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font Awesome -->
+    <!-- Load Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 
+    <!-- TAILWIND CONFIG (Keep for colors) -->
     <script>
         tailwind.config = {
             theme: {
@@ -23,187 +22,239 @@
                         primary: { DEFAULT: '#1e3a8a', light: '#3b82f6', dark: '#1e40af' },
                         secondary: { DEFAULT: '#dc2626', light: '#ef4444', dark: '#b91c1c' },
                         accent: { DEFAULT: '#f59e0b', light: '#fbbf24', dark: '#d97706' },
-                        neutral: { light: '#f8fafc', DEFAULT: '#64748b', dark: '#334155' }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
                     }
                 }
             }
         }
     </script>
     
+    <!-- HARDCODED CSS (The "Bulletproof" Layer) -->
     <style>
-        /* === RESET & BASICS === */
-        body { overflow-x: hidden; width: 100%; }
-        * { transition: all 0.3s ease; }
+        /* === RESET === */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; color: #333; line-height: 1.5; }
+        h1, h2, h3, .heading-font { font-family: 'Montserrat', sans-serif; }
+        a { text-decoration: none; }
+
+        /* === LAYOUT UTILITIES === */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
         
-        /* === CUSTOM GRADIENTS === */
-        .hero-bg { 
+        /* Flexbox Helpers */
+        .flex-row { display: flex; flex-direction: row; align-items: center; }
+        .flex-col { display: flex; flex-direction: column; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+        .gap-20 { gap: 20px; }
+        .gap-40 { gap: 40px; }
+
+        /* Grid Helpers */
+        .grid-2 { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        .grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+        /* Desktop Overrides */
+        @media (min-width: 900px) {
+            .grid-2 { grid-template-columns: 1fr 1fr; }
+            .grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+            .lg-text-left { text-align: left; }
+            .lg-flex-row { flex-direction: row; }
+            .mobile-only { display: none !important; }
+            .desktop-only { display: block !important; }
+            .desktop-flex { display: flex !important; }
+        }
+
+        @media (max-width: 899px) {
+            .mobile-only { display: block !important; }
+            .desktop-only { display: none !important; }
+            .flex-col-mobile { flex-direction: column; }
+            .text-center-mobile { text-align: center; }
+        }
+
+        /* === HEADER === */
+        header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .nav-bar { height: 80px; display: flex; align-items: center; justify-content: space-between; }
+        
+        .nav-links a {
+            color: #555; font-weight: 600; font-size: 14px; margin-left: 30px; text-transform: uppercase; transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #1e3a8a; }
+        
+        .contact-btn {
+            background: #1e3a8a; color: white !important; padding: 10px 25px; border-radius: 50px;
+        }
+
+        /* === MOBILE MENU (Strictly Hidden) === */
+        #mobile-menu {
+            display: none; /* Hidden by default */
+            position: fixed; top: 0; right: 0; width: 80%; max-width: 300px; height: 100%;
+            background: white; z-index: 200; box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        #mobile-menu.active { display: block; }
+        .overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 150;
+        }
+        .overlay.active { display: block; }
+
+        /* === TOP BANNER === */
+        .top-banner {
+            background: #f59e0b; color: #111; text-align: center; padding: 8px;
+            font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+
+        /* === HERO SECTION === */
+        .hero {
             background: linear-gradient(180deg, #1e3a8a 0%, #172554 100%);
-            position: relative;
+            color: white; padding: 80px 0;
         }
-        .hero-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        .hero h1 { font-size: 2.5rem; line-height: 1.2; font-weight: 800; margin-bottom: 20px; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; }
+        
+        .hero-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 15px 30px; border-radius: 12px; font-weight: 700; margin: 5px;
+        }
+        .btn-primary { background: #dc2626; color: white; }
+        .btn-white { background: white; color: #1e3a8a; }
+
+        /* === IMAGE STYLES === */
+        .img-card {
+            background: rgba(255,255,255,0.1); padding: 10px; border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+        .img-responsive { width: 100%; height: auto; border-radius: 10px; display: block; }
+
+        /* === PRODUCT CARDS === */
+        .product-card {
+            background: white; border-radius: 15px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        .product-img-wrap { height: 250px; overflow: hidden; position: relative; }
+        .product-img { width: 100%; height: 100%; object-fit: cover; }
+        .badge {
+            position: absolute; top: 15px; right: 15px; 
+            padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase;
+        }
+        .bg-blue { background: #1e3a8a; color: white; }
+        .bg-gold { background: #f59e0b; color: white; }
+
+        .spec-row {
+            display: flex; justify-content: space-between; border-bottom: 1px solid #f0f0f0;
+            padding: 8px 0; font-size: 14px;
+        }
+        .price-box {
+            background: #f8fafc; padding: 15px; border-radius: 10px; margin-top: 20px;
+            display: flex; justify-content: space-between; align-items: center;
         }
 
-        /* === COMPONENT STYLES === */
-        .btn-pulse { animation: pulse 2s infinite; }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
-        }
+        /* === TABLE === */
+        .table-wrap { overflow-x: auto; border: 1px solid #eee; border-radius: 12px; }
+        table { width: 100%; min-width: 600px; border-collapse: collapse; }
+        th { background: #1e3a8a; color: white; text-align: left; padding: 15px; }
+        td { padding: 15px; border-bottom: 1px solid #eee; }
+        .col-highlight { background: rgba(245, 158, 11, 0.1); font-weight: bold; }
 
-        /* Mobile Menu Transition */
-        .mobile-menu { transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .mobile-menu.open { transform: translateX(0); }
-
-        /* Desktop Price Tag */
-        .price-tag-desktop {
-            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 10% 50%);
-            padding-left: 1.5rem;
-        }
-
-        /* Footer Buttons */
-        .google-btn {
-            background: white; border: 1px solid #ddd; color: #444;
-            display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 99px; font-weight: 500;
-        }
-        .linkedin-btn {
-            background: #0077b5; color: white;
-            display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 99px; font-weight: 500;
+        /* === FOOTER === */
+        .footer-btns a {
+            display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 50px;
+            font-size: 14px; font-weight: 500; margin: 5px; border: 1px solid #ddd; color: #555;
         }
         
-        /* Table Scrollbar */
-        .custom-scrollbar::-webkit-scrollbar { height: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #999; }
     </style>
 </head>
-<body class="font-sans text-neutral-800 bg-neutral-50 flex flex-col min-h-screen">
+<body>
 
-    <!-- === TOP NOTIFICATION BAR (ALL SCREENS) === -->
-    <!-- Replaces the complex 'price tag' on mobile for 100% safety -->
-    <div class="bg-accent text-neutral-900 py-2 px-4 text-center font-bold text-xs md:text-sm tracking-wide shadow-sm z-50 relative">
-        <i class="fa-solid fa-triangle-exclamation mr-2"></i>
-        ONLY FOR PAPER MILLS - NO TRADERS PLEASE
+    <!-- 1. NOTIFICATION BAR (Top Safe Area) -->
+    <div class="top-banner">
+        <i class="fa-solid fa-triangle-exclamation"></i> Only For Paper Mills - NO TRADERS Please
     </div>
 
-    <!-- === HEADER === -->
-    <header class="bg-white sticky top-0 z-40 shadow-soft">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16 md:h-20">
-                
-                <!-- Logo -->
-                <div class="flex items-center gap-3">
-                    <div class="bg-primary/10 p-2 rounded-lg">
-                        <i class="fa-solid fa-layer-group text-primary text-xl"></i>
-                    </div>
-                    <div>
-                        <h1 class="font-heading text-lg md:text-2xl font-black text-primary leading-none">VARMAN METALS</h1>
-                        <span class="text-[10px] md:text-xs text-neutral-500 font-semibold tracking-wider uppercase block mt-1">Global Waste Paper Importer</span>
-                    </div>
+    <!-- 2. HEADER -->
+    <header>
+        <div class="container nav-bar">
+            <!-- Logo -->
+            <div class="flex-row gap-20">
+                <i class="fa-solid fa-layer-group text-2xl text-blue-800"></i>
+                <div class="flex-col">
+                    <span class="heading-font font-black text-xl text-blue-900 leading-none">VARMAN METALS</span>
+                    <span class="text-xs text-gray-500 font-bold uppercase tracking-wider">Global Waste Paper Importer</span>
                 </div>
-
-                <!-- Desktop Navigation -->
-                <nav class="hidden lg:flex items-center space-x-8">
-                    <a href="#products" class="text-sm font-semibold text-neutral-600 hover:text-primary transition">PRODUCTS</a>
-                    <a href="#specifications" class="text-sm font-semibold text-neutral-600 hover:text-primary transition">SPECS</a>
-                    <a href="#about" class="text-sm font-semibold text-neutral-600 hover:text-primary transition">ABOUT</a>
-                    <a href="#contact" class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-primary-dark transition shadow-lg transform hover:-translate-y-0.5">
-                        CONTACT US
-                    </a>
-                </nav>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="lg:hidden p-2 text-neutral-600 hover:text-primary transition focus:outline-none">
-                    <i class="fa-solid fa-bars text-2xl"></i>
-                </button>
             </div>
+
+            <!-- Desktop Nav -->
+            <div class="nav-links desktop-only desktop-flex">
+                <a href="#products">Products</a>
+                <a href="#specifications">Specs</a>
+                <a href="#about">About</a>
+                <a href="#contact" class="contact-btn">Contact Us</a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-only text-2xl text-gray-700 p-2" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <!-- === MOBILE MENU OVERLAY === -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/60 z-50 hidden opacity-0 transition-opacity"></div>
-    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-white z-[60] mobile-menu shadow-2xl flex flex-col">
-        <div class="p-6 border-b flex justify-between items-center bg-gray-50">
-            <span class="font-heading font-bold text-lg text-primary">Menu</span>
-            <button id="mobile-menu-close" class="text-neutral-400 hover:text-red-500 transition">
-                <i class="fa-solid fa-xmark text-2xl"></i>
-            </button>
+    <!-- MOBILE MENU (Hidden by default) -->
+    <div class="overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+    <div id="mobile-menu">
+        <div class="flex-row justify-between mb-8">
+            <span class="font-bold text-lg text-blue-900">Menu</span>
+            <button onclick="toggleMenu()" class="text-xl text-gray-400"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <div class="p-6 flex flex-col gap-6 text-lg">
-            <a href="#products" class="font-medium text-neutral-700 hover:text-primary flex items-center gap-3">
-                <i class="fa-solid fa-box-open text-accent w-6"></i> Products
-            </a>
-            <a href="#specifications" class="font-medium text-neutral-700 hover:text-primary flex items-center gap-3">
-                <i class="fa-solid fa-list-check text-accent w-6"></i> Specifications
-            </a>
-            <a href="#about" class="font-medium text-neutral-700 hover:text-primary flex items-center gap-3">
-                <i class="fa-solid fa-building text-accent w-6"></i> About Us
-            </a>
-        </div>
-        <div class="mt-auto p-6 bg-gray-50">
-            <a href="#contact" class="block w-full bg-secondary text-white text-center py-3 rounded-lg font-bold shadow-md">
-                Call Now
-            </a>
+        <div class="flex-col gap-20">
+            <a href="#products" class="p-3 border-b border-gray-100 block text-gray-800" onclick="toggleMenu()">Products</a>
+            <a href="#specifications" class="p-3 border-b border-gray-100 block text-gray-800" onclick="toggleMenu()">Specifications</a>
+            <a href="#about" class="p-3 border-b border-gray-100 block text-gray-800" onclick="toggleMenu()">About Us</a>
+            <a href="#contact" class="mt-4 block text-center bg-red-600 text-white p-3 rounded-lg font-bold" onclick="toggleMenu()">Call Now</a>
         </div>
     </div>
 
-    <!-- === HERO SECTION === -->
-    <section class="hero-bg hero-pattern text-white py-16 lg:py-24 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+    <!-- 3. HERO SECTION -->
+    <section class="hero text-center-mobile">
+        <div class="container">
+            <div class="flex-row lg-flex-row flex-col-mobile gap-40">
                 
-                <!-- Hero Text -->
-                <div class="w-full lg:w-1/2 text-center lg:text-left z-10">
-                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full mb-6 mx-auto lg:mx-0">
-                        <i class="fa-solid fa-star text-accent text-xs"></i>
-                        <span class="text-xs font-bold tracking-widest uppercase">Premium Quality Materials</span>
+                <!-- Text -->
+                <div style="flex: 1;">
+                    <div class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs font-bold mb-4 border border-white/20">
+                        PREMIUM QUALITY MATERIALS
                     </div>
-                    
-                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight">
-                        Importer Of <br class="hidden lg:block" />
-                        <span class="text-accent">OCC 11 & 12</span> <br class="hidden lg:block" />
-                        Waste Paper
-                    </h1>
-                    
-                    <p class="text-lg text-blue-100 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                        We buy from <span class="text-white font-bold">US, EU, UAE & ASEAN</span>. <br/>
-                        We sell exclusively to <span class="text-white font-bold border-b-2 border-accent">Paper Mills in Uttar Pradesh</span>.
+                    <h1>Importer Of <br><span class="text-amber-400">OCC 11 & 12</span><br>Waste Paper</h1>
+                    <p>
+                        We buy from <b>US, EU, UAE & ASEAN</b>.<br>
+                        We sell exclusively to <b class="text-white border-b-2 border-amber-500">Paper Mills in Uttar Pradesh</b>.
                     </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="tel:+916396811315" class="bg-secondary hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg btn-pulse flex items-center justify-center gap-2 transition">
-                            <i class="fa-solid fa-phone"></i> Call To Discuss
+                    <div class="flex-row flex-col-mobile justify-center lg-justify-start">
+                        <a href="tel:+916396811315" class="hero-btn btn-primary">
+                            <i class="fa-solid fa-phone mr-2"></i> Call To Discuss
                         </a>
-                        <a href="#products" class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-xl font-bold text-lg shadow-lg flex items-center justify-center gap-2 transition">
+                        <a href="#products" class="hero-btn btn-white">
                             View Products
                         </a>
                     </div>
                 </div>
 
-                <!-- Hero Image -->
-                <div class="w-full lg:w-1/2 relative max-w-lg lg:max-w-none mx-auto">
-                    <!-- Clean container, no fancy rotation on mobile to prevent overflow -->
-                    <div class="bg-white/10 p-2 rounded-2xl backdrop-blur-sm border border-white/20">
-                        <img src="images/FRONT.JPEG" onerror="this.src='https://placehold.co/800x600/1e3a8a/FFF?text=Varman+Metals'" alt="OCC Bales" class="w-full rounded-xl shadow-2xl relative z-10 block">
+                <!-- Image -->
+                <div style="flex: 1; width: 100%;">
+                    <div class="img-card">
+                        <img src="images/FRONT.JPEG" onerror="this.src='https://placehold.co/800x600/1e3a8a/FFF?text=Varman+Metals'" class="img-responsive" alt="OCC Bales">
                     </div>
-                    
-                    <!-- Static Badge (Stacked below image on mobile for safety) -->
-                    <div class="mt-4 lg:absolute lg:-bottom-6 lg:-left-6 bg-white text-neutral-900 p-4 rounded-xl shadow-xl border-l-4 border-accent flex items-center gap-4 max-w-xs mx-auto lg:mx-0">
-                        <div class="bg-accent/10 p-3 rounded-full text-accent">
-                            <i class="fa-solid fa-truck-fast text-2xl"></i>
+                    <!-- Feature Box -->
+                    <div class="bg-white text-left p-4 rounded-lg mt-4 shadow-lg border-l-4 border-amber-500 flex-row gap-20 max-w-sm mx-auto">
+                        <div class="bg-amber-100 p-3 rounded-full text-amber-600">
+                            <i class="fa-solid fa-truck-fast text-xl"></i>
                         </div>
-                        <div class="text-left">
-                            <p class="text-xs text-neutral-500 font-bold uppercase tracking-wider">Supply Chain</p>
-                            <p class="text-lg font-bold text-primary leading-tight">Consistent & Fast</p>
+                        <div>
+                            <div class="text-xs text-gray-500 font-bold uppercase">Supply Chain</div>
+                            <div class="font-bold text-blue-900">Consistent & Fast</div>
                         </div>
                     </div>
                 </div>
@@ -212,114 +263,85 @@
         </div>
     </section>
 
-    <!-- === FEATURES GRID (Mobile Grid / Desktop Flex) === -->
-    <div class="bg-neutral-900 py-10 border-b-4 border-accent">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="p-4 rounded-lg bg-white/5 border border-white/10">
-                    <i class="fa-solid fa-globe text-accent text-2xl mb-2 block"></i>
-                    <span class="text-white text-sm font-medium">Global Sourcing</span>
+    <!-- 4. FEATURES GRID -->
+    <div class="bg-gray-900 py-8 border-b-4 border-amber-500">
+        <div class="container">
+            <div class="grid-4">
+                <div class="text-center p-3 bg-white/5 rounded border border-white/10">
+                    <i class="fa-solid fa-globe text-amber-400 text-xl mb-2"></i>
+                    <div class="text-white text-sm font-bold">Global Sourcing</div>
                 </div>
-                <div class="p-4 rounded-lg bg-white/5 border border-white/10">
-                    <i class="fa-solid fa-ship text-accent text-2xl mb-2 block"></i>
-                    <span class="text-white text-sm font-medium">40ft Shipping</span>
+                <div class="text-center p-3 bg-white/5 rounded border border-white/10">
+                    <i class="fa-solid fa-ship text-amber-400 text-xl mb-2"></i>
+                    <div class="text-white text-sm font-bold">40ft Shipping</div>
                 </div>
-                <div class="p-4 rounded-lg bg-white/5 border border-white/10">
-                    <i class="fa-solid fa-check-double text-accent text-2xl mb-2 block"></i>
-                    <span class="text-white text-sm font-medium">Double Sorted</span>
+                <div class="text-center p-3 bg-white/5 rounded border border-white/10">
+                    <i class="fa-solid fa-check-double text-amber-400 text-xl mb-2"></i>
+                    <div class="text-white text-sm font-bold">Double Sorted</div>
                 </div>
-                <div class="p-4 rounded-lg bg-white/5 border border-white/10">
-                    <i class="fa-solid fa-indian-rupee-sign text-accent text-2xl mb-2 block"></i>
-                    <span class="text-white text-sm font-medium">Best Pricing</span>
+                <div class="text-center p-3 bg-white/5 rounded border border-white/10">
+                    <i class="fa-solid fa-indian-rupee-sign text-amber-400 text-xl mb-2"></i>
+                    <div class="text-white text-sm font-bold">Best Pricing</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- === PRODUCTS SECTION === -->
-    <section id="products" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-accent font-bold tracking-widest uppercase text-sm">Our Inventory</span>
-                <h2 class="font-heading text-3xl md:text-4xl font-black text-primary mt-2 mb-4">Premium Waste Paper Grades</h2>
-                <p class="text-neutral-500 text-lg">Detailed inspection and quality control for every bale.</p>
+    <!-- 5. PRODUCTS -->
+    <section id="products" style="padding: 60px 0;">
+        <div class="container">
+            <div class="text-center mb-10">
+                <span class="text-amber-600 font-bold text-sm uppercase tracking-widest">Our Inventory</span>
+                <h2 class="text-3xl font-black text-blue-900 mt-2">Premium Waste Paper Grades</h2>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
-                <!-- Product Card 1 -->
-                <div class="bg-white rounded-2xl shadow-lg border border-neutral-100 overflow-hidden group hover:border-primary/30 transition">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="images/bale1.jpeg" onerror="this.src='https://placehold.co/600x400/f1f5f9/1e3a8a?text=OCC+11'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="OCC 11">
-                        <div class="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded shadow-sm uppercase">Standard Grade</div>
+            <div class="grid-2">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/bale1.jpeg" onerror="this.src='https://placehold.co/600x400/f1f5f9/1e3a8a?text=OCC+11'" class="product-img" alt="OCC 11">
+                        <span class="badge bg-blue">Standard Grade</span>
                     </div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-baseline mb-2">
-                            <h3 class="font-heading text-2xl font-bold text-neutral-900">OCC 11</h3>
-                            <span class="text-sm font-mono text-neutral-400">#OCC11</span>
-                        </div>
-                        <p class="text-neutral-500 mb-6 pb-6 border-b border-neutral-100">Commercial origin corrugated containers with consistent fiber strength.</p>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-blue-900 mb-2">OCC 11</h3>
+                        <p class="text-gray-500 text-sm mb-4">Commercial origin corrugated containers.</p>
                         
-                        <div class="space-y-3 mb-8">
-                            <div class="flex justify-between text-sm">
-                                <span class="text-neutral-600">Corrugated Content</span>
-                                <span class="font-bold text-primary">90-95%</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-neutral-600">Outthrows</span>
-                                <span class="font-bold text-red-500">&lt; 5%</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-neutral-600">Moisture</span>
-                                <span class="font-bold text-neutral-800">Max 5%</span>
-                            </div>
-                        </div>
+                        <div class="spec-row"><span>Corrugated Content</span> <span class="font-bold">90-95%</span></div>
+                        <div class="spec-row"><span>Outthrows</span> <span class="font-bold text-red-600">&lt; 5%</span></div>
+                        <div class="spec-row"><span>Moisture</span> <span class="font-bold">Max 5%</span></div>
 
-                        <div class="bg-gray-50 p-4 rounded-xl flex items-center justify-between">
+                        <div class="price-box">
                             <div>
-                                <p class="text-xs text-neutral-500 uppercase font-bold">Estimated Price</p>
-                                <p class="text-lg font-black text-neutral-800">₹18k - 20k<span class="text-xs font-normal text-neutral-500 ml-1">/ MT</span></p>
+                                <div class="text-xs text-gray-500 uppercase font-bold">Estimated Price</div>
+                                <div class="text-lg font-black text-gray-800">₹18k - 20k<span class="text-xs font-normal">/ MT</span></div>
                             </div>
-                            <a href="#contact" class="bg-white border border-gray-200 hover:border-primary text-primary w-10 h-10 rounded-full flex items-center justify-center shadow-sm transition">
+                            <a href="#contact" class="bg-white border border-gray-300 text-blue-900 w-10 h-10 rounded-full flex items-center justify-center">
                                 <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product Card 2 -->
-                <div class="bg-white rounded-2xl shadow-lg border border-neutral-100 overflow-hidden group hover:border-accent/50 transition">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="images/bale3.jpeg" onerror="this.src='https://placehold.co/600x400/f1f5f9/d97706?text=OCC+12'" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="OCC 12">
-                        <div class="absolute top-4 right-4 bg-accent text-white text-xs font-bold px-3 py-1 rounded shadow-sm uppercase">Premium Grade</div>
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/bale3.jpeg" onerror="this.src='https://placehold.co/600x400/f1f5f9/d97706?text=OCC+12'" class="product-img" alt="OCC 12">
+                        <span class="badge bg-gold">Premium Grade</span>
                     </div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-baseline mb-2">
-                            <h3 class="font-heading text-2xl font-bold text-neutral-900">OCC 12</h3>
-                            <span class="text-sm font-mono text-neutral-400">#OCC12</span>
-                        </div>
-                        <p class="text-neutral-500 mb-6 pb-6 border-b border-neutral-100">Double sorted industrial origin corrugated. Minimal contamination.</p>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-blue-900 mb-2">OCC 12</h3>
+                        <p class="text-gray-500 text-sm mb-4">Double sorted industrial origin. Minimal contamination.</p>
                         
-                        <div class="space-y-3 mb-8">
-                            <div class="flex justify-between text-sm">
-                                <span class="text-neutral-600">Corrugated Content</span>
-                                <span class="font-bold text-green-600">98%+</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-neutral-600">Outthrows</span>
-                                <span class="font-bold text-green-600">&lt; 2%</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-neutral-600">Moisture</span>
-                                <span class="font-bold text-neutral-800">Max 5%</span>
-                            </div>
-                        </div>
+                        <div class="spec-row"><span>Corrugated Content</span> <span class="font-bold text-green-600">98%+</span></div>
+                        <div class="spec-row"><span>Outthrows</span> <span class="font-bold text-green-600">&lt; 2%</span></div>
+                        <div class="spec-row"><span>Moisture</span> <span class="font-bold">Max 5%</span></div>
 
-                        <div class="bg-orange-50 p-4 rounded-xl flex items-center justify-between">
+                        <div class="price-box" style="background: #fffbeb;">
                             <div>
-                                <p class="text-xs text-orange-600 uppercase font-bold">Estimated Price</p>
-                                <p class="text-lg font-black text-neutral-800">₹18k - 20k<span class="text-xs font-normal text-neutral-500 ml-1">/ MT</span></p>
+                                <div class="text-xs text-amber-600 uppercase font-bold">Estimated Price</div>
+                                <div class="text-lg font-black text-gray-800">₹18k - 20k<span class="text-xs font-normal">/ MT</span></div>
                             </div>
-                            <a href="#contact" class="bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center shadow-sm hover:bg-accent-dark transition">
+                            <a href="#contact" class="bg-amber-500 text-white w-10 h-10 rounded-full flex items-center justify-center">
                                 <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
@@ -329,185 +351,121 @@
         </div>
     </section>
 
-    <!-- === SPECS TABLE === -->
-    <section id="specifications" class="py-16 bg-white border-y border-gray-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-                <div>
-                    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary">Technical Specifications</h2>
-                    <p class="text-neutral-500 mt-2">Side-by-side comparison</p>
-                </div>
-                <div class="text-sm text-neutral-400 italic">
-                    <i class="fa-solid fa-scroll mr-1"></i> Scroll table horizontally on mobile
-                </div>
+    <!-- 6. TABLE -->
+    <section id="specifications" style="padding: 60px 0; background: #fff;">
+        <div class="container">
+            <h2 class="text-2xl font-bold text-blue-900 mb-6 text-center-mobile">Technical Specifications</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>OCC 11</th>
+                            <th style="background: #f59e0b; color: #000;">OCC 12 (Best)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>Corrugated Content</b></td>
+                            <td>90-95%</td>
+                            <td class="col-highlight">98%+</td>
+                        </tr>
+                        <tr>
+                            <td><b>Prohibitive Materials</b></td>
+                            <td class="text-red-600">&lt; 1%</td>
+                            <td class="col-highlight text-green-600">0%</td>
+                        </tr>
+                        <tr>
+                            <td><b>Outthrows</b></td>
+                            <td>&lt; 5%</td>
+                            <td class="col-highlight text-green-600">&lt; 2%</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-
-            <!-- Card-style container for table -->
-            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
-                <div class="overflow-x-auto custom-scrollbar">
-                    <table class="w-full text-left border-collapse min-w-[600px]">
-                        <thead>
-                            <tr class="bg-neutral-900 text-white text-xs uppercase tracking-wider">
-                                <th class="p-4 font-semibold w-1/3">Parameter</th>
-                                <th class="p-4 font-semibold w-1/3 border-l border-white/10">OCC 11</th>
-                                <th class="p-4 font-semibold w-1/3 border-l border-white/10 bg-accent text-neutral-900">OCC 12 (Recommended)</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-sm text-neutral-700 divide-y divide-gray-100">
-                            <tr class="hover:bg-gray-50">
-                                <td class="p-4 font-bold text-neutral-900">Corrugated Content</td>
-                                <td class="p-4 border-l">90-95%</td>
-                                <td class="p-4 border-l bg-orange-50/30 font-bold text-neutral-900">98%+</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50">
-                                <td class="p-4 font-bold text-neutral-900">Prohibitive Materials</td>
-                                <td class="p-4 border-l text-red-500">&lt; 1%</td>
-                                <td class="p-4 border-l bg-orange-50/30 font-bold text-green-600">0%</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50">
-                                <td class="p-4 font-bold text-neutral-900">Outthrows</td>
-                                <td class="p-4 border-l">&lt; 5%</td>
-                                <td class="p-4 border-l bg-orange-50/30 font-bold text-green-600">&lt; 2%</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50">
-                                <td class="p-4 font-bold text-neutral-900">Bale Weight</td>
-                                <td class="p-4 border-l">800kg+</td>
-                                <td class="p-4 border-l bg-orange-50/30">1000kg+</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="p-3 bg-gray-50 border-t border-gray-200 text-center text-xs text-neutral-500">
-                    * All materials meet international ISRI standards.
-                </div>
-            </div>
+            <p class="text-center text-xs text-gray-400 mt-4">* All materials meet international ISRI standards.</p>
         </div>
     </section>
 
-    <!-- === MISSION === -->
-    <section id="about" class="py-20 bg-neutral-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 lg:p-16 border border-gray-100 flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/2">
-                    <h2 class="font-heading text-3xl font-bold text-primary mb-6">Why Varman Metals?</h2>
-                    <p class="text-neutral-600 mb-6 leading-relaxed">
-                        We bridge the gap between global recycling hubs and Indian manufacturing. By securing reliable, high-volume contracts with suppliers in the US and UAE, we guarantee <b>consistent quality</b> that local traders simply cannot match.
+    <!-- 7. MISSION -->
+    <section id="about" style="padding: 60px 0; background: #f8fafc;">
+        <div class="container">
+            <div class="product-card p-6 lg-flex-row flex-col-mobile flex-row gap-40 items-center">
+                <div style="flex: 1; padding: 20px;">
+                    <h2 class="text-3xl font-bold text-blue-900 mb-4">Why Varman Metals?</h2>
+                    <p class="text-gray-600 mb-6">
+                        We bridge the gap between global recycling hubs and Indian manufacturing. By securing reliable, high-volume contracts with suppliers in the US and UAE, we guarantee <b>consistent quality</b>.
                     </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                            <span class="font-medium text-neutral-800">Direct Import</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                            <span class="font-medium text-neutral-800">Quality Assured</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                            <span class="font-medium text-neutral-800">Consistent Supply</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                            <span class="font-medium text-neutral-800">Door-to-Door</span>
-                        </div>
+                    <div class="grid-2">
+                        <div class="flex-row gap-20"><i class="fa-solid fa-check text-green-500"></i> Direct Import</div>
+                        <div class="flex-row gap-20"><i class="fa-solid fa-check text-green-500"></i> Quality Assured</div>
+                        <div class="flex-row gap-20"><i class="fa-solid fa-check text-green-500"></i> Consistent Supply</div>
+                        <div class="flex-row gap-20"><i class="fa-solid fa-check text-green-500"></i> Door-to-Door</div>
                     </div>
                 </div>
-                <div class="lg:w-1/2 flex justify-center">
-                    <div class="bg-primary/5 p-10 rounded-full">
-                        <i class="fa-solid fa-recycle text-6xl md:text-8xl text-accent animate-spin" style="animation-duration: 10s;"></i>
-                    </div>
+                <div style="flex: 1; display: flex; justify-content: center;">
+                    <i class="fa-solid fa-recycle text-6xl text-amber-500" style="font-size: 100px;"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- === CONTACT === -->
-    <section id="contact" class="bg-neutral-900 text-white py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-primary/20 opacity-30 pattern-dots"></div>
-        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+    <!-- 8. CONTACT -->
+    <section id="contact" style="background: #111; color: white; padding: 80px 0; text-align: center;">
+        <div class="container">
+            <h2 class="text-3xl font-bold mb-8">Secure Your Supply Chain</h2>
+            <div class="grid-4 mb-10 text-left">
+                <div class="p-4 bg-white/10 rounded">
+                    <div class="text-amber-500 font-bold text-sm">OFFICE</div>
+                    <div>Jail Chungi, Meerut</div>
+                </div>
+                <div class="p-4 bg-white/10 rounded">
+                    <div class="text-amber-500 font-bold text-sm">PHONE</div>
+                    <div>+91-6396811315</div>
+                </div>
+                 <div class="p-4 bg-white/10 rounded" style="grid-column: span 2;">
+                    <div class="text-amber-500 font-bold text-sm">EMAIL</div>
+                    <div>info@varmanmetals.in</div>
+                </div>
+            </div>
             
-            <h2 class="font-heading text-3xl md:text-5xl font-bold mb-8">Secure Your Supply Chain</h2>
-            <p class="text-neutral-300 text-lg mb-12">Contact us today for current pricing and availability.</p>
-
-            <div class="grid md:grid-cols-3 gap-6 mb-12 text-left">
-                <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-white/20 transition">
-                    <i class="fa-solid fa-location-dot text-accent text-2xl mb-4"></i>
-                    <h3 class="font-bold text-lg mb-1">Office</h3>
-                    <p class="text-sm text-neutral-300">Jail Chungi, Meerut, UP, India</p>
-                </div>
-                <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-white/20 transition">
-                    <i class="fa-solid fa-phone text-accent text-2xl mb-4"></i>
-                    <h3 class="font-bold text-lg mb-1">Phone</h3>
-                    <p class="text-sm text-neutral-300">+91-6396811315</p>
-                </div>
-                <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-white/20 transition">
-                    <i class="fa-solid fa-envelope text-accent text-2xl mb-4"></i>
-                    <h3 class="font-bold text-lg mb-1">Email</h3>
-                    <p class="text-sm text-neutral-300 break-words">info@varmanmetals.in</p>
-                </div>
-            </div>
-
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://wa.me/916396811315?text=Hi%20Varman%20Metals" target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-3 transition shadow-xl">
-                    <i class="fa-brands fa-whatsapp text-2xl"></i> Chat on WhatsApp
+            <div class="flex-row justify-center gap-20 flex-col-mobile">
+                <a href="https://wa.me/916396811315" class="hero-btn" style="background: #25D366; color: white;">
+                    <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp
                 </a>
-                <a href="tel:+916396811315" class="bg-white hover:bg-gray-200 text-neutral-900 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-3 transition shadow-xl">
-                    <i class="fa-solid fa-phone"></i> Call Directly
+                <a href="tel:+916396811315" class="hero-btn btn-white">
+                    <i class="fa-solid fa-phone mr-2"></i> Call Directly
                 </a>
             </div>
-
         </div>
     </section>
 
-    <!-- === FOOTER === -->
-    <footer class="bg-white border-t border-gray-200 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <!-- 9. FOOTER -->
+    <footer style="background: white; padding: 40px 0; border-top: 1px solid #eee; text-align: center;">
+        <div class="container">
+            <h3 class="text-xl font-black text-blue-900">VARMAN METALS</h3>
+            <p class="text-xs text-gray-500 mb-6">© 2026. All rights reserved.</p>
             
-            <h3 class="font-heading text-xl font-black text-primary mb-2">VARMAN METALS</h3>
-            <p class="text-neutral-500 text-sm mb-8">© 2026. All rights reserved.</p>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://www.google.com/search?q=varman+metals" target="_blank" class="google-btn hover:bg-gray-50 transition">
-                    <span class="w-5 h-5 rounded-full flex items-center justify-center font-bold text-white mr-2" style="background: conic-gradient(from 45deg, #4285f4 0deg, #4285f4 90deg, #34a853 90deg, #34a853 180deg, #fbbc05 180deg, #fbbc05 270deg, #ea4335 270deg, #ea4335 360deg);">G</span>
-                    Search on Google
+            <div class="footer-btns justify-center flex-row flex-col-mobile">
+                <a href="https://www.google.com/search?q=varman+metals" target="_blank">
+                    <i class="fa-brands fa-google text-red-500 mr-2"></i> Google Search
                 </a>
-                <a href="https://www.linkedin.com/company/varman-metals/" target="_blank" class="linkedin-btn hover:bg-blue-700 transition">
-                    <i class="fa-brands fa-linkedin text-xl mr-2"></i> Follow on LinkedIn
+                <a href="https://www.linkedin.com/company/varman-metals/" target="_blank">
+                    <i class="fa-brands fa-linkedin text-blue-700 mr-2"></i> LinkedIn
                 </a>
             </div>
-            
-            <p class="mt-8 text-xs text-neutral-400">Designed by Shiv Suri</p>
+            <p class="text-xs text-gray-400 mt-6">Designed by Shiv Suri</p>
         </div>
     </footer>
 
-    <!-- === SCRIPTS === -->
+    <!-- JS FOR MOBILE MENU -->
     <script>
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const closeBtn = document.getElementById('mobile-menu-close');
-        const menu = document.getElementById('mobile-menu');
-        const overlay = document.getElementById('mobile-menu-overlay');
-
         function toggleMenu() {
-            const isClosed = menu.classList.contains('translate-x-full') || !menu.classList.contains('open');
-            if (isClosed) {
-                menu.classList.add('open');
-                overlay.classList.remove('hidden');
-                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
-            } else {
-                menu.classList.remove('open');
-                overlay.classList.add('opacity-0');
-                setTimeout(() => overlay.classList.add('hidden'), 300);
-            }
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('menuOverlay');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
         }
-
-        menuBtn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
-        
-        // Close menu on link click
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', toggleMenu);
-        });
     </script>
 </body>
 </html>
