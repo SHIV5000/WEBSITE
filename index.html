@@ -11,17 +11,19 @@
     
     <!-- Load Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <!-- Industrial Fonts: Oswald (Headings) & Roboto Condensed (Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- TAILWIND CONFIG (Keep for colors) -->
+    <!-- TAILWIND CONFIG -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: { DEFAULT: '#1e3a8a', light: '#3b82f6', dark: '#1e40af' },
-                        secondary: { DEFAULT: '#dc2626', light: '#ef4444', dark: '#b91c1c' },
-                        accent: { DEFAULT: '#f59e0b', light: '#fbbf24', dark: '#d97706' },
+                        primary: { DEFAULT: '#0f172a', light: '#334155', dark: '#020617' }, /* Slate 900 */
+                        secondary: { DEFAULT: '#b91c1c', light: '#ef4444', dark: '#991b1b' }, /* Red 700 */
+                        accent: { DEFAULT: '#f59e0b', light: '#fbbf24', dark: '#d97706' }, /* Amber 500 */
+                        industrial: { DEFAULT: '#475569', light: '#94a3b8' } /* Slate 600 */
                     }
                 }
             }
@@ -32,16 +34,27 @@
     <style>
         /* === RESET === */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; color: #333; line-height: 1.5; }
-        h1, h2, h3, .heading-font { font-family: 'Montserrat', sans-serif; }
-        a { text-decoration: none; }
+        body { 
+            font-family: 'Roboto Condensed', sans-serif; 
+            font-size: 18px; /* Slightly bigger base size */
+            overflow-x: hidden; 
+            color: #1e293b; 
+            line-height: 1.6; 
+            background-color: #f1f5f9;
+        }
+        h1, h2, h3, .heading-font { 
+            font-family: 'Oswald', sans-serif; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+        }
+        a { text-decoration: none; transition: all 0.2s ease; }
 
         /* === LAYOUT UTILITIES === */
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
         
         /* Flexbox Helpers */
@@ -54,7 +67,7 @@
 
         /* Grid Helpers */
         .grid-2 { display: grid; grid-template-columns: 1fr; gap: 30px; }
-        .grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
         /* Desktop Overrides */
         @media (min-width: 900px) {
@@ -75,104 +88,122 @@
         }
 
         /* === HEADER === */
-        header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
-        .nav-bar { height: 80px; display: flex; align-items: center; justify-content: space-between; }
+        header { background: white; border-bottom: 4px solid #f59e0b; position: sticky; top: 0; z-index: 100; }
+        .nav-bar { height: 90px; display: flex; align-items: center; justify-content: space-between; }
         
         .nav-links a {
-            color: #555; font-weight: 600; font-size: 14px; margin-left: 30px; text-transform: uppercase; transition: color 0.2s;
+            color: #334155; font-weight: 700; font-size: 16px; margin-left: 35px; text-transform: uppercase; letter-spacing: 1px;
         }
-        .nav-links a:hover { color: #1e3a8a; }
+        .nav-links a:hover { color: #b91c1c; }
         
         .contact-btn {
-            background: #1e3a8a; color: white !important; padding: 10px 25px; border-radius: 50px;
+            background: #b91c1c; color: white !important; padding: 12px 30px; border-radius: 4px; /* Industrial Square */
+            font-family: 'Oswald', sans-serif; letter-spacing: 1px;
         }
+        .contact-btn:hover { background: #991b1b; }
 
-        /* === MOBILE MENU (Strictly Hidden) === */
+        /* === MOBILE MENU === */
         #mobile-menu {
-            display: none; /* Hidden by default */
-            position: fixed; top: 0; right: 0; width: 80%; max-width: 300px; height: 100%;
-            background: white; z-index: 200; box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            padding: 20px;
+            display: none; position: fixed; top: 0; right: 0; width: 85%; max-width: 320px; height: 100%;
+            background: #0f172a; color: white; z-index: 200; box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            padding: 30px;
         }
         #mobile-menu.active { display: block; }
         .overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 150;
+            background: rgba(0,0,0,0.7); z-index: 150;
         }
         .overlay.active { display: block; }
+        .mobile-link { color: white; display: block; padding: 15px 0; border-bottom: 1px solid #334155; font-size: 1.2rem; }
 
         /* === TOP BANNER === */
         .top-banner {
-            background: #f59e0b; color: #111; text-align: center; padding: 8px;
-            font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;
+            background: #000; color: #f59e0b; text-align: center; padding: 10px;
+            font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;
+            font-family: 'Oswald', sans-serif;
         }
 
         /* === HERO SECTION === */
         .hero {
-            background: linear-gradient(180deg, #1e3a8a 0%, #172554 100%);
-            color: white; padding: 80px 0;
+            /* Carbon Fiber pattern overlay */
+            background: 
+                linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95)),
+                url('data:image/svg+xml,%3Csvg width="4" height="4" viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1 3h1v1H1V3zm2-2h1v1H3V1z" fill="%23334155" fill-opacity="0.4" fill-rule="evenodd"/%3E%3C/svg%3E');
+            color: white; padding: 100px 0;
         }
-        .hero h1 { font-size: 2.5rem; line-height: 1.2; font-weight: 800; margin-bottom: 20px; }
-        .hero p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; }
+        .hero h1 { font-size: 3rem; line-height: 1.1; font-weight: 700; margin-bottom: 25px; color: white; }
+        .hero p { font-size: 1.2rem; color: #cbd5e1; margin-bottom: 40px; font-weight: 300; }
         
         .hero-btn {
             display: inline-flex; align-items: center; justify-content: center;
-            padding: 15px 30px; border-radius: 12px; font-weight: 700; margin: 5px;
+            padding: 16px 35px; border-radius: 4px; font-weight: 700; margin: 5px;
+            font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px;
         }
-        .btn-primary { background: #dc2626; color: white; }
-        .btn-white { background: white; color: #1e3a8a; }
+        .btn-primary { background: #f59e0b; color: #000; border: 2px solid #f59e0b; }
+        .btn-primary:hover { background: #d97706; border-color: #d97706; }
+        
+        .btn-outline { background: transparent; color: white; border: 2px solid white; }
+        .btn-outline:hover { background: white; color: #000; }
 
         /* === IMAGE STYLES === */
         .img-card {
-            background: rgba(255,255,255,0.1); padding: 10px; border-radius: 15px;
-            backdrop-filter: blur(5px);
+            background: rgba(255,255,255,0.05); padding: 15px; border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
-        .img-responsive { width: 100%; height: auto; border-radius: 10px; display: block; }
+        .img-responsive { width: 100%; height: auto; display: block; filter: contrast(1.1); }
 
         /* === PRODUCT CARDS === */
         .product-card {
-            background: white; border-radius: 15px; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee;
-            margin-bottom: 20px;
+            background: white; border-radius: 4px; overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border-bottom: 4px solid #94a3b8;
+            margin-bottom: 20px; transition: transform 0.2s;
         }
-        .product-img-wrap { height: 250px; overflow: hidden; position: relative; }
+        .product-card:hover { transform: translateY(-5px); border-bottom-color: #f59e0b; }
+        
+        .product-img-wrap { height: 260px; overflow: hidden; position: relative; }
         .product-img { width: 100%; height: 100%; object-fit: cover; }
         .badge {
-            position: absolute; top: 15px; right: 15px; 
-            padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase;
+            position: absolute; top: 0; right: 0; 
+            padding: 8px 15px; font-size: 14px; font-weight: bold; text-transform: uppercase;
+            font-family: 'Oswald', sans-serif;
         }
-        .bg-blue { background: #1e3a8a; color: white; }
-        .bg-gold { background: #f59e0b; color: white; }
+        .bg-slate { background: #334155; color: white; }
+        .bg-gold { background: #f59e0b; color: #000; }
 
         .spec-row {
-            display: flex; justify-content: space-between; border-bottom: 1px solid #f0f0f0;
-            padding: 8px 0; font-size: 14px;
+            display: flex; justify-content: space-between; border-bottom: 1px solid #e2e8f0;
+            padding: 12px 0; font-size: 16px; color: #475569;
         }
+        .spec-val { font-weight: 700; color: #0f172a; }
+        
         .price-box {
-            background: #f8fafc; padding: 15px; border-radius: 10px; margin-top: 20px;
+            background: #f8fafc; padding: 20px; border: 1px solid #e2e8f0; margin-top: 25px;
             display: flex; justify-content: space-between; align-items: center;
         }
 
         /* === TABLE === */
-        .table-wrap { overflow-x: auto; border: 1px solid #eee; border-radius: 12px; }
-        table { width: 100%; min-width: 600px; border-collapse: collapse; }
-        th { background: #1e3a8a; color: white; text-align: left; padding: 15px; }
-        td { padding: 15px; border-bottom: 1px solid #eee; }
-        .col-highlight { background: rgba(245, 158, 11, 0.1); font-weight: bold; }
+        .table-wrap { overflow-x: auto; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        table { width: 100%; min-width: 650px; border-collapse: collapse; }
+        th { background: #0f172a; color: white; text-align: left; padding: 18px; text-transform: uppercase; font-family: 'Oswald', sans-serif; font-weight: 400; letter-spacing: 1px; }
+        td { padding: 18px; border-bottom: 1px solid #cbd5e1; font-weight: 600; color: #334155; }
+        .col-highlight { background: #fffbeb; font-weight: 800; color: #000; border-left: 2px solid #f59e0b; }
 
-        /* === FOOTER === */
-        .footer-btns a {
-            display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 50px;
-            font-size: 14px; font-weight: 500; margin: 5px; border: 1px solid #ddd; color: #555;
+        /* === CONTACT GRID === */
+        .contact-card {
+            background: rgba(255,255,255,0.05); padding: 25px; border: 1px solid rgba(255,255,255,0.1);
+            transition: background 0.3s;
         }
+        .contact-card:hover { background: rgba(255,255,255,0.1); border-color: #f59e0b; }
+        .contact-label { color: #f59e0b; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; font-family: 'Oswald', sans-serif; letter-spacing: 1px; }
+        .contact-val { color: white; font-size: 1.1rem; }
         
     </style>
 </head>
 <body>
 
-    <!-- 1. NOTIFICATION BAR (Top Safe Area) -->
+    <!-- 1. NOTIFICATION BAR -->
     <div class="top-banner">
-        <i class="fa-solid fa-triangle-exclamation"></i> Only For Paper Mills - NO TRADERS Please
+        <i class="fa-solid fa-triangle-exclamation text-amber-500 mr-2"></i> Only For Paper Mills - NO TRADERS Please
     </div>
 
     <!-- 2. HEADER -->
@@ -180,40 +211,40 @@
         <div class="container nav-bar">
             <!-- Logo -->
             <div class="flex-row gap-20">
-                <i class="fa-solid fa-layer-group text-2xl text-blue-800"></i>
+                <div class="bg-black text-white p-2 font-bold text-2xl w-12 h-12 flex items-center justify-center rounded-sm">V</div>
                 <div class="flex-col">
-                    <span class="heading-font font-black text-xl text-blue-900 leading-none">VARMAN METALS</span>
-                    <span class="text-xs text-gray-500 font-bold uppercase tracking-wider">Global Waste Paper Importer</span>
+                    <span class="heading-font font-bold text-2xl text-slate-900 leading-none tracking-tight">VARMAN METALS</span>
+                    <span class="text-xs text-slate-500 font-bold uppercase tracking-widest mt-1">Industrial Waste Paper Importer</span>
                 </div>
             </div>
 
             <!-- Desktop Nav -->
             <div class="nav-links desktop-only desktop-flex">
-                <a href="#products">Products</a>
+                <a href="#products">Inventory</a>
                 <a href="#specifications">Specs</a>
-                <a href="#about">About</a>
-                <a href="#contact" class="contact-btn">Contact Us</a>
+                <a href="#about">Company</a>
+                <a href="#contact" class="contact-btn">Call Now</a>
             </div>
 
             <!-- Mobile Menu Toggle -->
-            <button class="mobile-only text-2xl text-gray-700 p-2" onclick="toggleMenu()">
+            <button class="mobile-only text-3xl text-slate-900 p-2" onclick="toggleMenu()">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
     </header>
 
-    <!-- MOBILE MENU (Hidden by default) -->
+    <!-- MOBILE MENU -->
     <div class="overlay" id="menuOverlay" onclick="toggleMenu()"></div>
     <div id="mobile-menu">
-        <div class="flex-row justify-between mb-8">
-            <span class="font-bold text-lg text-blue-900">Menu</span>
-            <button onclick="toggleMenu()" class="text-xl text-gray-400"><i class="fa-solid fa-xmark"></i></button>
+        <div class="flex-row justify-between mb-10 border-b border-slate-700 pb-4">
+            <span class="font-bold text-2xl text-white font-oswald uppercase">Menu</span>
+            <button onclick="toggleMenu()" class="text-2xl text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <div class="flex-col gap-20">
-            <a href="#products" class="p-3 border-b border-gray-100 block text-gray-800" onclick="toggleMenu()">Products</a>
-            <a href="#specifications" class="p-3 border-b border-gray-100 block text-gray-800" onclick="toggleMenu()">Specifications</a>
-            <a href="#about" class="p-3 border-b border-gray-100 block text-gray-800" onclick="toggleMenu()">About Us</a>
-            <a href="#contact" class="mt-4 block text-center bg-red-600 text-white p-3 rounded-lg font-bold" onclick="toggleMenu()">Call Now</a>
+        <div class="flex-col">
+            <a href="#products" class="mobile-link" onclick="toggleMenu()">Inventory List</a>
+            <a href="#specifications" class="mobile-link" onclick="toggleMenu()">Specifications</a>
+            <a href="#about" class="mobile-link" onclick="toggleMenu()">About Company</a>
+            <a href="#contact" class="mt-8 block text-center bg-red-700 text-white p-4 font-bold uppercase tracking-widest" onclick="toggleMenu()">Contact Us</a>
         </div>
     </div>
 
@@ -224,10 +255,10 @@
                 
                 <!-- Text -->
                 <div style="flex: 1;">
-                    <div class="inline-block bg-white/10 px-3 py-1 rounded-full text-xs font-bold mb-4 border border-white/20">
-                        PREMIUM QUALITY MATERIALS
+                    <div class="inline-block bg-amber-500 text-black px-4 py-1 font-bold text-sm mb-6 uppercase tracking-wider">
+                        <i class="fa-solid fa-star mr-1"></i> Premium Quality Materials
                     </div>
-                    <h1>Importer Of <br><span class="text-amber-400">OCC 11 & 12</span><br>Waste Paper</h1>
+                    <h1>Importer Of <br><span class="text-amber-500">OCC 11 & 12</span><br>Waste Paper</h1>
                     <p>
                         We buy from <b>US, EU, UAE & ASEAN</b>.<br>
                         We sell exclusively to <b class="text-white border-b-2 border-amber-500">Paper Mills in Uttar Pradesh</b>.
@@ -236,8 +267,8 @@
                         <a href="tel:+916396811315" class="hero-btn btn-primary">
                             <i class="fa-solid fa-phone mr-2"></i> Call To Discuss
                         </a>
-                        <a href="#products" class="hero-btn btn-white">
-                            View Products
+                        <a href="#products" class="hero-btn btn-outline">
+                            View Inventory
                         </a>
                     </div>
                 </div>
@@ -245,16 +276,16 @@
                 <!-- Image -->
                 <div style="flex: 1; width: 100%;">
                     <div class="img-card">
-                        <img src="images/FRONT.JPEG" onerror="this.src='https://placehold.co/800x600/1e3a8a/FFF?text=Varman+Metals'" class="img-responsive" alt="OCC Bales">
+                        <img src="images/FRONT.JPEG" onerror="this.src='https://placehold.co/800x600/1e293b/FFF?text=INDUSTRIAL+OCC'" class="img-responsive" alt="OCC Bales">
                     </div>
                     <!-- Feature Box -->
-                    <div class="bg-white text-left p-4 rounded-lg mt-4 shadow-lg border-l-4 border-amber-500 flex-row gap-20 max-w-sm mx-auto">
-                        <div class="bg-amber-100 p-3 rounded-full text-amber-600">
-                            <i class="fa-solid fa-truck-fast text-xl"></i>
+                    <div class="bg-white text-left p-4 mt-4 border-l-8 border-amber-500 flex-row gap-20 shadow-xl max-w-sm mx-auto">
+                        <div class="text-amber-600">
+                            <i class="fa-solid fa-truck-fast text-3xl"></i>
                         </div>
                         <div>
-                            <div class="text-xs text-gray-500 font-bold uppercase">Supply Chain</div>
-                            <div class="font-bold text-blue-900">Consistent & Fast</div>
+                            <div class="text-xs text-slate-500 font-bold uppercase tracking-widest">Supply Chain</div>
+                            <div class="font-bold text-slate-900 text-xl font-oswald">CONSISTENT & FAST</div>
                         </div>
                     </div>
                 </div>
@@ -263,36 +294,36 @@
         </div>
     </section>
 
-    <!-- 4. FEATURES GRID -->
-    <div class="bg-gray-900 py-8 border-b-4 border-amber-500">
+    <!-- 4. FEATURES STRIP -->
+    <div class="bg-slate-900 py-10 border-b-4 border-amber-500">
         <div class="container">
             <div class="grid-4">
-                <div class="text-center p-3 bg-white/5 rounded border border-white/10">
-                    <i class="fa-solid fa-globe text-amber-400 text-xl mb-2"></i>
-                    <div class="text-white text-sm font-bold">Global Sourcing</div>
+                <div class="text-center p-4 bg-slate-800 border border-slate-700">
+                    <i class="fa-solid fa-globe text-amber-500 text-2xl mb-2"></i>
+                    <div class="text-white text-lg font-bold font-oswald">GLOBAL SOURCING</div>
                 </div>
-                <div class="text-center p-3 bg-white/5 rounded border border-white/10">
-                    <i class="fa-solid fa-ship text-amber-400 text-xl mb-2"></i>
-                    <div class="text-white text-sm font-bold">40ft Shipping</div>
+                <div class="text-center p-4 bg-slate-800 border border-slate-700">
+                    <i class="fa-solid fa-ship text-amber-500 text-2xl mb-2"></i>
+                    <div class="text-white text-lg font-bold font-oswald">40FT SHIPPING</div>
                 </div>
-                <div class="text-center p-3 bg-white/5 rounded border border-white/10">
-                    <i class="fa-solid fa-check-double text-amber-400 text-xl mb-2"></i>
-                    <div class="text-white text-sm font-bold">Double Sorted</div>
+                <div class="text-center p-4 bg-slate-800 border border-slate-700">
+                    <i class="fa-solid fa-check-double text-amber-500 text-2xl mb-2"></i>
+                    <div class="text-white text-lg font-bold font-oswald">DOUBLE SORTED</div>
                 </div>
-                <div class="text-center p-3 bg-white/5 rounded border border-white/10">
-                    <i class="fa-solid fa-indian-rupee-sign text-amber-400 text-xl mb-2"></i>
-                    <div class="text-white text-sm font-bold">Best Pricing</div>
+                <div class="text-center p-4 bg-slate-800 border border-slate-700">
+                    <i class="fa-solid fa-indian-rupee-sign text-amber-500 text-2xl mb-2"></i>
+                    <div class="text-white text-lg font-bold font-oswald">BEST PRICING</div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- 5. PRODUCTS -->
-    <section id="products" style="padding: 60px 0;">
+    <section id="products" style="padding: 80px 0;">
         <div class="container">
-            <div class="text-center mb-10">
-                <span class="text-amber-600 font-bold text-sm uppercase tracking-widest">Our Inventory</span>
-                <h2 class="text-3xl font-black text-blue-900 mt-2">Premium Waste Paper Grades</h2>
+            <div class="text-center mb-12">
+                <span class="text-amber-600 font-bold text-sm uppercase tracking-[0.2em]">Our Inventory</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-2">PREMIUM WASTE PAPER GRADES</h2>
             </div>
 
             <div class="grid-2">
@@ -300,22 +331,22 @@
                 <div class="product-card">
                     <div class="product-img-wrap">
                         <img src="images/bale1.jpeg" onerror="this.src='https://placehold.co/600x400/f1f5f9/1e3a8a?text=OCC+11'" class="product-img" alt="OCC 11">
-                        <span class="badge bg-blue">Standard Grade</span>
+                        <span class="badge bg-slate">Standard Grade</span>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-blue-900 mb-2">OCC 11</h3>
-                        <p class="text-gray-500 text-sm mb-4">Commercial origin corrugated containers.</p>
+                    <div class="p-8">
+                        <h3 class="text-3xl font-bold text-slate-900 mb-2">OCC 11</h3>
+                        <p class="text-slate-500 text-sm mb-6 uppercase font-bold tracking-wide border-b pb-4"># Commercial Corrugated</p>
                         
-                        <div class="spec-row"><span>Corrugated Content</span> <span class="font-bold">90-95%</span></div>
-                        <div class="spec-row"><span>Outthrows</span> <span class="font-bold text-red-600">&lt; 5%</span></div>
-                        <div class="spec-row"><span>Moisture</span> <span class="font-bold">Max 5%</span></div>
+                        <div class="spec-row"><span>Corrugated Content</span> <span class="spec-val">90-95%</span></div>
+                        <div class="spec-row"><span>Outthrows</span> <span class="spec-val text-red-600">&lt; 5%</span></div>
+                        <div class="spec-row"><span>Moisture</span> <span class="spec-val">Max 5%</span></div>
 
                         <div class="price-box">
                             <div>
-                                <div class="text-xs text-gray-500 uppercase font-bold">Estimated Price</div>
-                                <div class="text-lg font-black text-gray-800">₹18k - 20k<span class="text-xs font-normal">/ MT</span></div>
+                                <div class="text-xs text-slate-500 uppercase font-bold">Estimated Price / MT</div>
+                                <div class="text-2xl font-bold text-slate-900">₹18k - 20k</div>
                             </div>
-                            <a href="#contact" class="bg-white border border-gray-300 text-blue-900 w-10 h-10 rounded-full flex items-center justify-center">
+                            <a href="#contact" class="bg-white border-2 border-slate-300 text-slate-900 w-12 h-12 flex items-center justify-center hover:bg-slate-900 hover:text-white hover:border-slate-900">
                                 <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
@@ -323,25 +354,25 @@
                 </div>
 
                 <!-- Product 2 -->
-                <div class="product-card">
+                <div class="product-card border-bottom-amber">
                     <div class="product-img-wrap">
                         <img src="images/bale3.jpeg" onerror="this.src='https://placehold.co/600x400/f1f5f9/d97706?text=OCC+12'" class="product-img" alt="OCC 12">
                         <span class="badge bg-gold">Premium Grade</span>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-blue-900 mb-2">OCC 12</h3>
-                        <p class="text-gray-500 text-sm mb-4">Double sorted industrial origin. Minimal contamination.</p>
+                    <div class="p-8">
+                        <h3 class="text-3xl font-bold text-slate-900 mb-2">OCC 12</h3>
+                        <p class="text-slate-500 text-sm mb-6 uppercase font-bold tracking-wide border-b pb-4"># Double Sorted Industrial</p>
                         
-                        <div class="spec-row"><span>Corrugated Content</span> <span class="font-bold text-green-600">98%+</span></div>
-                        <div class="spec-row"><span>Outthrows</span> <span class="font-bold text-green-600">&lt; 2%</span></div>
-                        <div class="spec-row"><span>Moisture</span> <span class="font-bold">Max 5%</span></div>
+                        <div class="spec-row"><span>Corrugated Content</span> <span class="spec-val text-green-700">98%+</span></div>
+                        <div class="spec-row"><span>Outthrows</span> <span class="spec-val text-green-700">&lt; 2%</span></div>
+                        <div class="spec-row"><span>Moisture</span> <span class="spec-val">Max 5%</span></div>
 
-                        <div class="price-box" style="background: #fffbeb;">
+                        <div class="price-box" style="background: #fffbeb; border-color: #fcd34d;">
                             <div>
-                                <div class="text-xs text-amber-600 uppercase font-bold">Estimated Price</div>
-                                <div class="text-lg font-black text-gray-800">₹18k - 20k<span class="text-xs font-normal">/ MT</span></div>
+                                <div class="text-xs text-amber-700 uppercase font-bold">Estimated Price / MT</div>
+                                <div class="text-2xl font-bold text-slate-900">₹18k - 20k</div>
                             </div>
-                            <a href="#contact" class="bg-amber-500 text-white w-10 h-10 rounded-full flex items-center justify-center">
+                            <a href="#contact" class="bg-amber-500 text-black w-12 h-12 flex items-center justify-center hover:bg-black hover:text-white">
                                 <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
@@ -352,109 +383,124 @@
     </section>
 
     <!-- 6. TABLE -->
-    <section id="specifications" style="padding: 60px 0; background: #fff;">
+    <section id="specifications" style="padding: 80px 0; background: #fff;">
         <div class="container">
-            <h2 class="text-2xl font-bold text-blue-900 mb-6 text-center-mobile">Technical Specifications</h2>
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center-mobile uppercase">Technical Specifications</h2>
             <div class="table-wrap">
                 <table>
                     <thead>
                         <tr>
-                            <th>Parameter</th>
-                            <th>OCC 11</th>
-                            <th style="background: #f59e0b; color: #000;">OCC 12 (Best)</th>
+                            <th style="width: 40%">Parameter</th>
+                            <th style="width: 30%">OCC 11</th>
+                            <th style="width: 30%; background: #f59e0b; color: black; font-weight: 700;">OCC 12 (Best)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><b>Corrugated Content</b></td>
+                            <td>Corrugated Content</td>
                             <td>90-95%</td>
                             <td class="col-highlight">98%+</td>
                         </tr>
                         <tr>
-                            <td><b>Prohibitive Materials</b></td>
+                            <td>Prohibitive Materials</td>
                             <td class="text-red-600">&lt; 1%</td>
-                            <td class="col-highlight text-green-600">0%</td>
+                            <td class="col-highlight text-green-700">0%</td>
                         </tr>
                         <tr>
-                            <td><b>Outthrows</b></td>
+                            <td>Outthrows</td>
                             <td>&lt; 5%</td>
-                            <td class="col-highlight text-green-600">&lt; 2%</td>
+                            <td class="col-highlight text-green-700">&lt; 2%</td>
+                        </tr>
+                        <tr>
+                            <td>Bale Weight</td>
+                            <td>800kg+</td>
+                            <td class="col-highlight">1000kg+</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <p class="text-center text-xs text-gray-400 mt-4">* All materials meet international ISRI standards.</p>
+            <p class="text-center text-xs text-slate-400 mt-6 uppercase tracking-wide font-bold">* All materials meet international ISRI standards.</p>
         </div>
     </section>
 
     <!-- 7. MISSION -->
-    <section id="about" style="padding: 60px 0; background: #f8fafc;">
+    <section id="about" style="padding: 80px 0; background: #e2e8f0;">
         <div class="container">
-            <div class="product-card p-6 lg-flex-row flex-col-mobile flex-row gap-40 items-center">
-                <div style="flex: 1; padding: 20px;">
-                    <h2 class="text-3xl font-bold text-blue-900 mb-4">Why Varman Metals?</h2>
-                    <p class="text-gray-600 mb-6">
+            <div class="bg-white p-8 lg:p-12 border border-slate-200 lg-flex-row flex-col-mobile flex-row gap-40 items-center shadow-lg">
+                <div style="flex: 1;">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">WHY VARMAN METALS?</h2>
+                    <p class="text-slate-600 mb-8 text-lg">
                         We bridge the gap between global recycling hubs and Indian manufacturing. By securing reliable, high-volume contracts with suppliers in the US and UAE, we guarantee <b>consistent quality</b>.
                     </p>
                     <div class="grid-2">
-                        <div class="flex-row gap-20"><i class="fa-solid fa-check text-green-500"></i> Direct Import</div>
-                        <div class="flex-row gap-20"><i class="fa-solid fa-check text-green-500"></i> Quality Assured</div>
-                        <div class="flex-row gap-20"><i class="fa-solid fa-check text-green-500"></i> Consistent Supply</div>
-                        <div class="flex-row gap-20"><i class="fa-solid fa-check text-green-500"></i> Door-to-Door</div>
+                        <div class="flex-row gap-20 font-bold text-slate-800"><i class="fa-solid fa-check text-green-600"></i> Direct Import</div>
+                        <div class="flex-row gap-20 font-bold text-slate-800"><i class="fa-solid fa-check text-green-600"></i> Quality Assured</div>
+                        <div class="flex-row gap-20 font-bold text-slate-800"><i class="fa-solid fa-check text-green-600"></i> Consistent Supply</div>
+                        <div class="flex-row gap-20 font-bold text-slate-800"><i class="fa-solid fa-check text-green-600"></i> Door-to-Door</div>
                     </div>
                 </div>
-                <div style="flex: 1; display: flex; justify-content: center;">
-                    <i class="fa-solid fa-recycle text-6xl text-amber-500" style="font-size: 100px;"></i>
+                <div style="flex: 1; display: flex; justify-content: center; opacity: 0.1;">
+                    <i class="fa-solid fa-recycle" style="font-size: 180px; color: #0f172a;"></i>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 8. CONTACT -->
-    <section id="contact" style="background: #111; color: white; padding: 80px 0; text-align: center;">
+    <section id="contact" style="background: #0f172a; color: white; padding: 100px 0; text-align: center;">
         <div class="container">
-            <h2 class="text-3xl font-bold mb-8">Secure Your Supply Chain</h2>
-            <div class="grid-4 mb-10 text-left">
-                <div class="p-4 bg-white/10 rounded">
-                    <div class="text-amber-500 font-bold text-sm">OFFICE</div>
-                    <div>Jail Chungi, Meerut</div>
+            <h2 class="text-4xl font-bold mb-4 uppercase">Secure Your Supply Chain</h2>
+            <p class="text-slate-400 mb-10 text-lg">Contact us today for current pricing and availability.</p>
+            
+            <div class="grid-4 mb-12 text-left">
+                <div class="contact-card">
+                    <div class="contact-label">Office</div>
+                    <div class="contact-val">Jail Chungi, Meerut</div>
                 </div>
-                <div class="p-4 bg-white/10 rounded">
-                    <div class="text-amber-500 font-bold text-sm">PHONE</div>
-                    <div>+91-6396811315</div>
+                
+                <!-- Masked Phone Number (Button) -->
+                <div class="contact-card">
+                    <div class="contact-label">Phone</div>
+                    <a href="tel:+916396811315" class="bg-amber-500 text-black px-4 py-2 mt-2 inline-block font-bold text-sm uppercase rounded hover:bg-white hover:text-black">
+                        Call Now
+                    </a>
                 </div>
-                 <div class="p-4 bg-white/10 rounded" style="grid-column: span 2;">
-                    <div class="text-amber-500 font-bold text-sm">EMAIL</div>
-                    <div>info@varmanmetals.in</div>
+                
+                <!-- Masked Email (Button/Link) -->
+                <div class="contact-card" style="grid-column: span 2;">
+                    <div class="contact-label">Email</div>
+                    <a href="mailto:info@varmanmetals.in" class="text-white hover:text-amber-500 underline decoration-amber-500 decoration-2 underline-offset-4">
+                        info@varmanmetals.in
+                    </a>
                 </div>
             </div>
             
             <div class="flex-row justify-center gap-20 flex-col-mobile">
                 <a href="https://wa.me/916396811315" class="hero-btn" style="background: #25D366; color: white;">
-                    <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp
+                    <i class="fa-brands fa-whatsapp mr-2 text-xl"></i> WhatsApp Us
                 </a>
                 <a href="tel:+916396811315" class="hero-btn btn-white">
-                    <i class="fa-solid fa-phone mr-2"></i> Call Directly
+                    <i class="fa-solid fa-phone mr-2 text-xl"></i> Call Directly
                 </a>
             </div>
         </div>
     </section>
 
     <!-- 9. FOOTER -->
-    <footer style="background: white; padding: 40px 0; border-top: 1px solid #eee; text-align: center;">
+    <footer style="background: #020617; padding: 50px 0; border-top: 1px solid #1e293b; text-align: center; color: #94a3b8;">
         <div class="container">
-            <h3 class="text-xl font-black text-blue-900">VARMAN METALS</h3>
-            <p class="text-xs text-gray-500 mb-6">© 2026. All rights reserved.</p>
+            <h3 class="text-2xl font-bold text-white mb-2 tracking-widest">VARMAN METALS</h3>
+            <p class="text-sm text-slate-500 mb-8">© 2026. All rights reserved.</p>
             
             <div class="footer-btns justify-center flex-row flex-col-mobile">
-                <a href="https://www.google.com/search?q=varman+metals" target="_blank">
+                <a href="https://www.google.com/search?q=varman+metals" target="_blank" style="background: #1e293b; border: none; color: white;">
                     <i class="fa-brands fa-google text-red-500 mr-2"></i> Google Search
                 </a>
-                <a href="https://www.linkedin.com/company/varman-metals/" target="_blank">
-                    <i class="fa-brands fa-linkedin text-blue-700 mr-2"></i> LinkedIn
+                <a href="https://www.linkedin.com/company/varman-metals/" target="_blank" style="background: #0077b5; border: none; color: white;">
+                    <i class="fa-brands fa-linkedin text-white mr-2"></i> LinkedIn
                 </a>
             </div>
-            <p class="text-xs text-gray-400 mt-6">Designed by Shiv Suri</p>
+            <p class="text-xs text-slate-700 mt-8 uppercase font-bold tracking-widest">Designed by Shiv Suri</p>
         </div>
     </footer>
 
