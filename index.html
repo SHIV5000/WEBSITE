@@ -11,7 +11,7 @@
     
     <!-- Load Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Condensed:wght@700;800;900&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
 
     <!-- TAILWIND CONFIG -->
     <script>
@@ -19,18 +19,25 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: { DEFAULT: '#0f3d8a', light: '#3b82f6', dark: '#0d2e6b' },
-                        secondary: { DEFAULT: '#e53935', light: '#ef5350', dark: '#c62828' },
-                        accent: { DEFAULT: '#ffb300', light: '#ffca28', dark: '#ff8f00' },
-                        neutral: { DEFAULT: '#f8fafc', dark: '#e2e8f0' }
+                        industrial: { 
+                            blue: '#0a2a5a', 
+                            steel: '#2c3e50',
+                            rust: '#c0392b',
+                            metal: '#7f8c8d',
+                            accent: '#27ae60'
+                        },
+                        primary: { DEFAULT: '#0a2a5a', light: '#1e3a8a', dark: '#071d3a' },
+                        secondary: { DEFAULT: '#c0392b', light: '#e74c3c', dark: '#a93226' },
                     },
                     fontFamily: {
-                        'heading': ['Poppins', 'sans-serif'],
-                        'body': ['Inter', 'sans-serif']
+                        'heading': ['Roboto Condensed', 'sans-serif'],
+                        'body': ['Montserrat', 'sans-serif'],
+                        'industrial': ['Inter', 'sans-serif']
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.8s ease-in-out',
                         'slide-up': 'slideUp 0.6s ease-out',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
                         'float': 'float 3s ease-in-out infinite'
                     },
                     keyframes: {
@@ -70,11 +77,13 @@
             color: #333;
             overflow-x: hidden;
             line-height: 1.6;
+            background: #f8f9fa;
         }
         
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
         
         .section-padding {
@@ -88,57 +97,94 @@
             padding: 0 20px;
         }
         
+        /* ===== INDUSTRIAL ELEMENTS ===== */
+        .industrial-border {
+            border: 2px solid #0a2a5a;
+            border-radius: 2px;
+        }
+        
+        .metal-texture {
+            background: linear-gradient(145deg, #2c3e50 0%, #0a2a5a 100%);
+        }
+        
+        .rusted-accent {
+            background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+        }
+        
         /* ===== BUTTONS ===== */
-        .btn-primary {
+        .btn-industrial {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             padding: 14px 32px;
-            background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
+            background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
             color: white;
-            font-weight: 600;
-            border-radius: 8px;
+            font-weight: 700;
+            border-radius: 4px;
             border: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(229, 57, 53, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'Roboto Condensed', sans-serif;
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3);
+            position: relative;
+            overflow: hidden;
         }
         
-        .btn-primary:hover {
+        .btn-industrial::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-industrial:hover::before {
+            left: 100%;
+        }
+        
+        .btn-industrial:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(229, 57, 53, 0.3);
-            background: linear-gradient(135deg, #ef5350 0%, #e53935 100%);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.4);
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
         }
         
-        .btn-secondary {
+        .btn-steel {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             padding: 14px 32px;
             background: white;
-            color: #0f3d8a;
-            font-weight: 600;
-            border-radius: 8px;
-            border: 2px solid #0f3d8a;
+            color: #0a2a5a;
+            font-weight: 700;
+            border-radius: 4px;
+            border: 2px solid #0a2a5a;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         
-        .btn-secondary:hover {
-            background: #0f3d8a;
+        .btn-steel:hover {
+            background: #0a2a5a;
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(15, 61, 138, 0.2);
+            box-shadow: 0 8px 20px rgba(10, 42, 90, 0.2);
         }
         
         /* ===== HEADER ===== */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
+            border-bottom: 3px solid #0a2a5a;
         }
         
         .nav-container {
@@ -157,8 +203,8 @@
         .logo-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #0f3d8a 0%, #3b82f6 100%);
-            border-radius: 12px;
+            background: linear-gradient(135deg, #0a2a5a 0%, #1e3a8a 100%);
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -168,15 +214,16 @@
         
         .logo-text h1 {
             font-size: 24px;
-            color: #0f3d8a;
+            color: #0a2a5a;
             line-height: 1.2;
+            text-transform: uppercase;
         }
         
         .logo-text span {
-            font-size: 12px;
-            color: #666;
-            font-weight: 500;
-            letter-spacing: 1px;
+            font-size: 11px;
+            color: #c0392b;
+            font-weight: 700;
+            letter-spacing: 1.5px;
         }
         
         .nav-links {
@@ -186,25 +233,27 @@
         }
         
         .nav-links a {
-            color: #444;
-            font-weight: 500;
-            font-size: 15px;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 14px;
             transition: color 0.3s;
             position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .nav-links a:hover {
-            color: #0f3d8a;
+            color: #c0392b;
         }
         
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -8px;
             left: 0;
             width: 0;
-            height: 2px;
-            background: #e53935;
+            height: 3px;
+            background: #c0392b;
             transition: width 0.3s ease;
         }
         
@@ -218,7 +267,7 @@
             background: none;
             border: none;
             font-size: 24px;
-            color: #0f3d8a;
+            color: #0a2a5a;
             cursor: pointer;
         }
         
@@ -235,6 +284,7 @@
             padding: 30px;
             display: flex;
             flex-direction: column;
+            border-left: 3px solid #0a2a5a;
         }
         
         .mobile-menu.active {
@@ -246,6 +296,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
         }
         
         .mobile-menu-close {
@@ -264,10 +316,11 @@
         
         .mobile-nav-links a {
             color: #333;
-            font-weight: 500;
-            font-size: 18px;
-            padding: 10px 0;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 12px 0;
             border-bottom: 1px solid #eee;
+            text-transform: uppercase;
         }
         
         .menu-overlay {
@@ -287,23 +340,14 @@
         
         /* ===== HERO SECTION ===== */
         .hero-section {
-            background: linear-gradient(135deg, #0f3d8a 0%, #1e3a8a 100%);
+            background: linear-gradient(rgba(10, 42, 90, 0.95), rgba(10, 42, 90, 0.98)), url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
             color: white;
             padding-top: 140px;
             padding-bottom: 100px;
             position: relative;
             overflow: hidden;
-        }
-        
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="none"><path d="M0,0 L1000,0 L1000,700 Q500,800 0,700 Z" fill="rgba(255,255,255,0.03)"/></svg>');
-            background-size: cover;
         }
         
         .hero-content {
@@ -317,11 +361,13 @@
             font-size: 48px;
             line-height: 1.1;
             margin-bottom: 20px;
+            text-transform: uppercase;
         }
         
         .hero-text h2 span {
-            color: #ffb300;
+            color: #27ae60;
             position: relative;
+            display: inline-block;
         }
         
         .hero-text h2 span::after {
@@ -331,7 +377,7 @@
             left: 0;
             width: 100%;
             height: 8px;
-            background: rgba(255, 179, 0, 0.2);
+            background: rgba(39, 174, 96, 0.3);
             z-index: -1;
         }
         
@@ -340,6 +386,7 @@
             margin-bottom: 30px;
             opacity: 0.9;
             max-width: 500px;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .hero-buttons {
@@ -354,9 +401,10 @@
         
         .hero-image {
             width: 100%;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             animation: float 4s ease-in-out infinite;
+            border: 3px solid #27ae60;
         }
         
         .hero-badge {
@@ -365,22 +413,25 @@
             left: 50%;
             transform: translateX(-50%);
             background: white;
-            color: #0f3d8a;
+            color: #0a2a5a;
             padding: 15px 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
             gap: 10px;
-            font-weight: 600;
+            font-weight: 700;
             width: 90%;
             max-width: 400px;
+            border: 2px solid #0a2a5a;
         }
         
         /* ===== FEATURES ===== */
         .features-section {
-            background: #f8fafc;
+            background: #f1f2f6;
             padding: 80px 0;
+            border-top: 3px solid #0a2a5a;
+            border-bottom: 3px solid #0a2a5a;
         }
         
         .section-title {
@@ -390,14 +441,31 @@
         
         .section-title h2 {
             font-size: 36px;
-            color: #0f3d8a;
+            color: #0a2a5a;
             margin-bottom: 15px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #c0392b;
         }
         
         .section-title p {
             color: #666;
             max-width: 600px;
             margin: 0 auto;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
         }
         
         .features-grid {
@@ -408,24 +476,26 @@
         
         .feature-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 4px;
             padding: 30px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid #0f3d8a;
+            border-top: 4px solid #0a2a5a;
+            border: 2px solid #e0e0e0;
         }
         
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+            border-color: #0a2a5a;
         }
         
         .feature-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, #ffb300 0%, #ffca28 100%);
-            border-radius: 50%;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -437,10 +507,15 @@
         .feature-card h3 {
             font-size: 20px;
             margin-bottom: 10px;
-            color: #0f3d8a;
+            color: #0a2a5a;
         }
         
         /* ===== PRODUCTS ===== */
+        .products-section {
+            background: white;
+            position: relative;
+        }
+        
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -449,20 +524,23 @@
         
         .product-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 4px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
+            border: 2px solid #e0e0e0;
         }
         
         .product-card:hover {
             transform: translateY(-10px);
+            border-color: #0a2a5a;
         }
         
         .product-image {
             height: 250px;
             overflow: hidden;
             position: relative;
+            border-bottom: 3px solid #0a2a5a;
         }
         
         .product-image img {
@@ -480,13 +558,14 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            background: #0f3d8a;
+            background: #0a2a5a;
             color: white;
             padding: 8px 16px;
-            border-radius: 20px;
+            border-radius: 2px;
             font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         
         .product-content {
@@ -495,8 +574,9 @@
         
         .product-content h3 {
             font-size: 24px;
-            color: #0f3d8a;
+            color: #0a2a5a;
             margin-bottom: 10px;
+            text-transform: uppercase;
         }
         
         .product-specs {
@@ -506,8 +586,9 @@
         .spec-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid #f0f0f0;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .spec-item:last-child {
@@ -515,58 +596,65 @@
         }
         
         .product-price {
-            background: #f8fafc;
+            background: #f8f9fa;
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 4px;
             margin-top: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border: 2px solid #e0e0e0;
         }
         
         .price-text h4 {
             font-size: 12px;
             color: #666;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             margin-bottom: 5px;
+            font-weight: 700;
         }
         
         .price-text p {
             font-size: 24px;
-            font-weight: 700;
-            color: #0f3d8a;
+            font-weight: 800;
+            color: #0a2a5a;
         }
         
         .price-btn {
             width: 50px;
             height: 50px;
-            border-radius: 50%;
-            background: #0f3d8a;
+            border-radius: 4px;
+            background: #0a2a5a;
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s ease;
+            border: 2px solid #0a2a5a;
         }
         
         .price-btn:hover {
-            background: #e53935;
+            background: #c0392b;
+            border-color: #c0392b;
             transform: rotate(-45deg);
         }
         
         /* ===== SPECIFICATIONS ===== */
         .specs-section {
-            background: #f8fafc;
+            background: #f1f2f6;
+            border-top: 3px solid #0a2a5a;
+            border-bottom: 3px solid #0a2a5a;
         }
         
         .specs-table {
             background: white;
-            border-radius: 16px;
+            border-radius: 4px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             overflow-x: auto;
+            border: 2px solid #0a2a5a;
         }
         
         .specs-table table {
@@ -576,19 +664,27 @@
         }
         
         .specs-table thead {
-            background: linear-gradient(135deg, #0f3d8a 0%, #1e3a8a 100%);
+            background: linear-gradient(135deg, #0a2a5a 0%, #1e3a8a 100%);
             color: white;
         }
         
         .specs-table th {
             padding: 20px;
             text-align: left;
-            font-weight: 600;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .specs-table th:last-child {
+            border-right: none;
         }
         
         .specs-table td {
             padding: 20px;
             border-bottom: 1px solid #f0f0f0;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .specs-table tbody tr:last-child td {
@@ -600,27 +696,33 @@
         }
         
         .highlight {
-            background: rgba(255, 179, 0, 0.1) !important;
-            font-weight: 600;
-            color: #0f3d8a;
+            background: rgba(39, 174, 96, 0.1) !important;
+            font-weight: 700;
+            color: #0a2a5a;
+            border-left: 3px solid #27ae60;
         }
         
         /* ===== MISSION ===== */
+        .mission-section {
+            background: white;
+        }
+        
         .mission-card {
-            background: linear-gradient(135deg, #0f3d8a 0%, #1e3a8a 100%);
+            background: linear-gradient(135deg, #0a2a5a 0%, #1e3a8a 100%);
             color: white;
-            border-radius: 20px;
+            border-radius: 4px;
             overflow: hidden;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             align-items: center;
             padding: 60px;
+            border: 3px solid #0a2a5a;
         }
         
         .mission-icon {
             font-size: 120px;
-            color: rgba(255, 255, 255, 0.1);
+            color: rgba(39, 174, 96, 0.9);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -641,15 +743,18 @@
         }
         
         .mission-feature i {
-            color: #ffb300;
+            color: #27ae60;
         }
         
         /* ===== CONTACT ===== */
         .contact-section {
-            background: linear-gradient(135deg, #0f3d8a 0%, #1e3a8a 100%);
+            background: linear-gradient(rgba(10, 42, 90, 0.95), rgba(10, 42, 90, 0.98)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
             color: white;
             position: relative;
             overflow: hidden;
+            border-top: 3px solid #c0392b;
         }
         
         .contact-section::before {
@@ -659,13 +764,25 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="none"><path d="M0,0 L1000,0 L1000,800 Q500,900 0,800 Z" fill="rgba(255,255,255,0.03)"/></svg>');
-            background-size: cover;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        .contact-title {
+            color: white !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .contact-title::after {
+            background: #27ae60 !important;
+        }
+        
+        .contact-subtitle {
+            color: rgba(255,255,255,0.9) !important;
         }
         
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-bottom: 40px;
         }
@@ -673,17 +790,24 @@
         .contact-item {
             background: rgba(255, 255, 255, 0.1);
             padding: 25px;
-            border-radius: 12px;
+            border-radius: 4px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            border-color: #27ae60;
         }
         
         .contact-item h4 {
-            color: #ffb300;
+            color: #27ae60;
             font-size: 14px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             margin-bottom: 10px;
+            font-weight: 700;
         }
         
         .contact-buttons {
@@ -695,9 +819,10 @@
         
         /* ===== FOOTER ===== */
         footer {
-            background: #0d2e6b;
+            background: #0a2a5a;
             color: white;
             padding: 50px 0 20px;
+            border-top: 3px solid #c0392b;
         }
         
         .footer-content {
@@ -710,12 +835,14 @@
             font-weight: 800;
             margin-bottom: 10px;
             color: white;
+            text-transform: uppercase;
         }
         
         .footer-tagline {
             color: #a0aec0;
             margin-bottom: 30px;
             font-size: 14px;
+            letter-spacing: 0.5px;
         }
         
         .footer-social {
@@ -728,7 +855,7 @@
         .social-link {
             width: 50px;
             height: 50px;
-            border-radius: 50%;
+            border-radius: 4px;
             background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
@@ -736,11 +863,13 @@
             color: white;
             text-decoration: none;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
         }
         
         .social-link:hover {
-            background: #e53935;
+            background: #27ae60;
             transform: translateY(-5px);
+            border-color: #27ae60;
         }
         
         .footer-bottom {
@@ -855,8 +984,8 @@
 </head>
 <body>
     <!-- Notification Bar -->
-    <div class="bg-accent text-center py-2 px-4 text-sm font-bold">
-        <i class="fas fa-exclamation-triangle mr-2"></i> Exclusive for Paper Mills - NO TRADERS Please
+    <div class="bg-industrial-accent text-center py-3 px-4 text-sm font-bold" style="background: #27ae60; color: white;">
+        <i class="fas fa-industry mr-2"></i> EXCLUSIVELY FOR PAPER MILLS - NO TRADERS PLEASE
     </div>
     
     <!-- Header -->
@@ -866,20 +995,20 @@
                 <!-- Logo -->
                 <div class="logo">
                     <div class="logo-icon">
-                        <i class="fas fa-recycle"></i>
+                        <i class="fas fa-industry"></i>
                     </div>
                     <div class="logo-text">
                         <h1>VARMAN METALS</h1>
-                        <span>Global Waste Paper Importer</span>
+                        <span>INDUSTRIAL WASTE PAPER IMPORTER</span>
                     </div>
                 </div>
                 
                 <!-- Desktop Navigation -->
                 <nav class="nav-links desktop-nav">
-                    <a href="#products">Products</a>
-                    <a href="#specifications">Specifications</a>
-                    <a href="#about">About Us</a>
-                    <a href="#contact" class="btn-primary">Contact Us</a>
+                    <a href="#products">PRODUCTS</a>
+                    <a href="#specifications">SPECIFICATIONS</a>
+                    <a href="#about">ABOUT</a>
+                    <a href="#contact" class="btn-industrial">CONTACT US</a>
                 </nav>
                 
                 <!-- Mobile Menu Button -->
@@ -898,7 +1027,7 @@
         <div class="mobile-menu-header">
             <div class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-recycle"></i>
+                    <i class="fas fa-industry"></i>
                 </div>
                 <div class="logo-text">
                     <h1>VARMAN</h1>
@@ -909,10 +1038,10 @@
             </button>
         </div>
         <div class="mobile-nav-links">
-            <a href="#products" onclick="closeMobileMenu()">Products</a>
-            <a href="#specifications" onclick="closeMobileMenu()">Specifications</a>
-            <a href="#about" onclick="closeMobileMenu()">About Us</a>
-            <a href="#contact" class="btn-primary" onclick="closeMobileMenu()">Contact Us</a>
+            <a href="#products" onclick="closeMobileMenu()">PRODUCTS</a>
+            <a href="#specifications" onclick="closeMobileMenu()">SPECIFICATIONS</a>
+            <a href="#about" onclick="closeMobileMenu()">ABOUT</a>
+            <a href="#contact" class="btn-industrial" onclick="closeMobileMenu()">CONTACT US</a>
         </div>
     </div>
     
@@ -921,30 +1050,30 @@
         <div class="container-custom">
             <div class="hero-content">
                 <div class="hero-text">
-                    <div class="inline-block bg-white/10 px-4 py-2 rounded-full text-sm font-bold mb-6 border border-white/20">
-                        PREMIUM QUALITY MATERIALS
+                    <div class="inline-block bg-white/10 px-4 py-2 rounded-sm text-sm font-bold mb-6 border border-white/20">
+                        <i class="fas fa-certificate mr-2"></i> PREMIUM INDUSTRIAL GRADE MATERIALS
                     </div>
-                    <h2>Premium Importer of <br><span>OCC 11 & 12</span><br>Waste Paper</h2>
+                    <h2>PREMIUM IMPORTER OF <br><span>OCC 11 & OCC 12</span><br>WASTE PAPER</h2>
                     <p>
-                        We source from <b>US, EU, UAE & ASEAN</b> markets.<br>
-                        We supply exclusively to <b>Paper Mills in Uttar Pradesh</b>.
+                        Direct sourcing from <b>US, EU, UAE & ASEAN</b> industrial markets.<br>
+                        Exclusive supply to <b>Paper Mills across Uttar Pradesh</b>.
                     </p>
                     <div class="hero-buttons">
-                        <a href="tel:+91XXXXXX1315" class="btn-primary">
-                            <i class="fas fa-phone mr-2"></i> Call To Discuss
+                        <a href="#contact" class="btn-industrial">
+                            <i class="fas fa-phone mr-2"></i> CALL TO DISCUSS
                         </a>
-                        <a href="#products" class="btn-secondary">
-                            <i class="fas fa-boxes mr-2"></i> View Products
+                        <a href="#products" class="btn-steel">
+                            <i class="fas fa-boxes mr-2"></i> VIEW PRODUCTS
                         </a>
                     </div>
                 </div>
                 <div class="hero-image-container">
                     <img src="images/FRONT.JPEG" onerror="this.src='https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'" alt="OCC Bales" class="hero-image">
                     <div class="hero-badge">
-                        <i class="fas fa-truck-fast text-accent text-xl"></i>
+                        <i class="fas fa-truck-fast" style="color: #27ae60; font-size: 24px;"></i>
                         <div>
-                            <div class="text-xs">Supply Chain</div>
-                            <div class="font-bold">Consistent & Fast Delivery</div>
+                            <div class="text-xs font-bold">INDUSTRIAL SUPPLY CHAIN</div>
+                            <div class="font-bold">GUARANTEED CONSISTENT DELIVERY</div>
                         </div>
                     </div>
                 </div>
@@ -955,45 +1084,50 @@
     <!-- Features Section -->
     <section class="features-section">
         <div class="container-custom">
+            <div class="section-title">
+                <h2>INDUSTRIAL ADVANTAGES</h2>
+                <p>Our industrial-grade supply chain ensures premium quality and reliability for paper mills</p>
+            </div>
+            
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-globe-americas"></i>
                     </div>
-                    <h3>Global Sourcing</h3>
-                    <p>Direct sourcing from US, EU, UAE & ASEAN markets</p>
+                    <h3>GLOBAL SOURCING</h3>
+                    <p>Direct procurement from US, EU, UAE & ASEAN industrial hubs</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-ship"></i>
                     </div>
-                    <h3>40ft Containers</h3>
-                    <p>Efficient shipping in 40ft containers for bulk orders</p>
+                    <h3>40FT CONTAINERS</h3>
+                    <p>Efficient bulk shipping in 40ft industrial containers</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-filter"></i>
                     </div>
-                    <h3>Double Sorted</h3>
-                    <p>Premium quality with double sorting process</p>
+                    <h3>DOUBLE SORTED</h3>
+                    <p>Industrial double-sorting process for premium quality</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-tag"></i>
                     </div>
-                    <h3>Best Pricing</h3>
-                    <p>Competitive prices with volume discounts</p>
+                    <h3>BEST PRICING</h3>
+                    <p>Competitive industrial pricing with volume discounts</p>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- Products Section -->
-    <section class="section-padding" id="products">
+    <section class="section-padding products-section" id="products">
         <div class="container-custom">
             <div class="section-title">
-                <h2>Premium Waste Paper Grades</h2>
-                <p>High-quality materials sourced globally for paper mills in Uttar Pradesh</p>
+                <h2>INDUSTRIAL GRADE PRODUCTS</h2>
+                <p>Premium OCC 11 & OCC 12 waste paper specifically sourced for paper manufacturing</p>
             </div>
             
             <div class="products-grid">
@@ -1001,11 +1135,11 @@
                 <div class="product-card">
                     <div class="product-image">
                         <img src="images/bale1.jpeg" onerror="this.src='https://images.unsplash.com/photo-1605244863941-3a3ed921c60f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'" alt="OCC 11">
-                        <div class="product-badge">Standard Grade</div>
+                        <div class="product-badge">INDUSTRIAL STANDARD GRADE</div>
                     </div>
                     <div class="product-content">
                         <h3>OCC 11</h3>
-                        <p class="text-gray-600">Commercial origin corrugated containers with minimal contamination.</p>
+                        <p class="text-gray-600" style="font-family: 'Montserrat', sans-serif;">Commercial origin corrugated containers with minimal industrial contamination.</p>
                         
                         <div class="product-specs">
                             <div class="spec-item">
@@ -1014,18 +1148,18 @@
                             </div>
                             <div class="spec-item">
                                 <span>Outthrows</span>
-                                <span class="font-bold text-red-600">&lt; 5%</span>
+                                <span class="font-bold" style="color: #c0392b;">&lt; 5%</span>
                             </div>
                             <div class="spec-item">
-                                <span>Moisture</span>
-                                <span class="font-bold">Max 5%</span>
+                                <span>Moisture Content</span>
+                                <span class="font-bold">MAX 5%</span>
                             </div>
                         </div>
                         
                         <div class="product-price">
                             <div class="price-text">
-                                <h4>Estimated Price</h4>
-                                <p>₹18k - 20k <span class="text-sm font-normal">/ MT</span></p>
+                                <h4>INDUSTRIAL PRICING</h4>
+                                <p>₹18k - 20k <span class="text-sm font-normal">/ METRIC TON</span></p>
                             </div>
                             <a href="#contact" class="price-btn">
                                 <i class="fas fa-arrow-right"></i>
@@ -1038,33 +1172,33 @@
                 <div class="product-card">
                     <div class="product-image">
                         <img src="images/bale3.jpeg" onerror="this.src='https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'" alt="OCC 12">
-                        <div class="product-badge" style="background: #ffb300;">Premium Grade</div>
+                        <div class="product-badge" style="background: #27ae60;">INDUSTRIAL PREMIUM GRADE</div>
                     </div>
                     <div class="product-content">
                         <h3>OCC 12</h3>
-                        <p class="text-gray-600">Double sorted industrial origin with minimal contamination.</p>
+                        <p class="text-gray-600" style="font-family: 'Montserrat', sans-serif;">Double sorted industrial origin with minimal contamination for premium manufacturing.</p>
                         
                         <div class="product-specs">
                             <div class="spec-item">
                                 <span>Corrugated Content</span>
-                                <span class="font-bold text-green-600">98%+</span>
+                                <span class="font-bold" style="color: #27ae60;">98%+</span>
                             </div>
                             <div class="spec-item">
                                 <span>Outthrows</span>
-                                <span class="font-bold text-green-600">&lt; 2%</span>
+                                <span class="font-bold" style="color: #27ae60;">&lt; 2%</span>
                             </div>
                             <div class="spec-item">
-                                <span>Moisture</span>
-                                <span class="font-bold">Max 5%</span>
+                                <span>Moisture Content</span>
+                                <span class="font-bold">MAX 5%</span>
                             </div>
                         </div>
                         
-                        <div class="product-price" style="background: #fffbeb;">
+                        <div class="product-price" style="background: rgba(39, 174, 96, 0.1); border-color: #27ae60;">
                             <div class="price-text">
-                                <h4 style="color: #d97706;">Premium Price</h4>
-                                <p style="color: #d97706;">₹20k - 22k <span class="text-sm font-normal">/ MT</span></p>
+                                <h4 style="color: #27ae60;">PREMIUM PRICING</h4>
+                                <p style="color: #27ae60;">₹20k - 22k <span class="text-sm font-normal">/ METRIC TON</span></p>
                             </div>
-                            <a href="#contact" class="price-btn" style="background: #ffb300;">
+                            <a href="#contact" class="price-btn" style="background: #27ae60; border-color: #27ae60;">
                                 <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
@@ -1078,17 +1212,17 @@
     <section class="section-padding specs-section" id="specifications">
         <div class="container-custom">
             <div class="section-title">
-                <h2>Technical Specifications</h2>
-                <p>Detailed comparison of OCC 11 and OCC 12 grades</p>
+                <h2>TECHNICAL SPECIFICATIONS</h2>
+                <p>Industrial-grade comparison of OCC 11 and OCC 12 waste paper</p>
             </div>
             
             <div class="specs-table">
                 <table>
                     <thead>
                         <tr>
-                            <th>Parameter</th>
+                            <th>PARAMETER</th>
                             <th>OCC 11</th>
-                            <th>OCC 12 (Premium)</th>
+                            <th>OCC 12 (PREMIUM)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1109,54 +1243,54 @@
                         </tr>
                         <tr>
                             <td><b>Moisture Content</b></td>
-                            <td>Max 5%</td>
-                            <td class="highlight">Max 5%</td>
+                            <td>MAX 5%</td>
+                            <td class="highlight">MAX 5%</td>
                         </tr>
                         <tr>
                             <td><b>Fiber Quality</b></td>
-                            <td>Good</td>
-                            <td class="highlight">Excellent</td>
+                            <td>INDUSTRIAL STANDARD</td>
+                            <td class="highlight">INDUSTRIAL PREMIUM</td>
                         </tr>
                         <tr>
-                            <td><b>Contamination</b></td>
-                            <td>Minimal</td>
-                            <td class="highlight">Negligible</td>
+                            <td><b>Contamination Level</b></td>
+                            <td>MINIMAL</td>
+                            <td class="highlight">NEGLIGIBLE</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <p class="text-center text-gray-500 text-sm mt-6">* All materials meet international ISRI standards and are double-sorted for quality assurance.</p>
+            <p class="text-center text-gray-500 text-sm mt-6" style="font-family: 'Montserrat', sans-serif;">* All materials meet international ISRI standards with industrial-grade quality assurance.</p>
         </div>
     </section>
     
     <!-- Mission Section -->
-    <section class="section-padding" id="about">
+    <section class="section-padding mission-section" id="about">
         <div class="container-custom">
             <div class="mission-card">
                 <div class="mission-icon">
-                    <i class="fas fa-recycle"></i>
+                    <i class="fas fa-recycle" style="color: #27ae60;"></i>
                 </div>
                 <div>
-                    <h2 class="text-3xl font-bold mb-6">Why Choose Varman Metals?</h2>
-                    <p class="mb-6 opacity-90">
-                        We bridge the gap between global recycling hubs and Indian manufacturing. By securing reliable, high-volume contracts with suppliers in the US, EU, and UAE, we guarantee consistent quality and supply chain stability for paper mills in Uttar Pradesh.
+                    <h2 class="text-3xl font-bold mb-6">WHY CHOOSE VARMAN METALS?</h2>
+                    <p class="mb-6 opacity-90" style="font-family: 'Montserrat', sans-serif;">
+                        We bridge the industrial gap between global recycling hubs and Indian manufacturing facilities. By securing reliable, high-volume contracts with industrial suppliers in the US, EU, and UAE, we guarantee consistent quality and supply chain stability for paper mills across Uttar Pradesh.
                     </p>
                     <div class="mission-features">
                         <div class="mission-feature">
                             <i class="fas fa-check-circle"></i>
-                            <span>Direct Import</span>
+                            <span>DIRECT INDUSTRIAL IMPORT</span>
                         </div>
                         <div class="mission-feature">
                             <i class="fas fa-check-circle"></i>
-                            <span>Quality Assured</span>
+                            <span>QUALITY ASSURED</span>
                         </div>
                         <div class="mission-feature">
                             <i class="fas fa-check-circle"></i>
-                            <span>Consistent Supply</span>
+                            <span>CONSISTENT SUPPLY</span>
                         </div>
                         <div class="mission-feature">
                             <i class="fas fa-check-circle"></i>
-                            <span>Door-to-Door Delivery</span>
+                            <span>DOOR-TO-DOOR DELIVERY</span>
                         </div>
                     </div>
                 </div>
@@ -1168,38 +1302,34 @@
     <section class="section-padding contact-section" id="contact">
         <div class="container-custom relative z-10">
             <div class="section-title">
-                <h2>Secure Your Supply Chain</h2>
-                <p>Contact us today to discuss your OCC requirements</p>
+                <h2 class="contact-title">SECURE YOUR INDUSTRIAL SUPPLY CHAIN</h2>
+                <p class="contact-subtitle">Contact us today to discuss your OCC requirements and secure consistent supply</p>
             </div>
             
             <div class="contact-grid">
                 <div class="contact-item">
-                    <h4>Office Address</h4>
+                    <h4>INDUSTRIAL OFFICE</h4>
                     <p>Jail Chungi, Meerut<br>Uttar Pradesh, India</p>
                 </div>
                 <div class="contact-item">
-                    <h4>Phone Number</h4>
-                    <p>+91-XXXXXX1315</p>
+                    <h4>INDUSTRIAL EMAIL</h4>
+                    <p>info@varmanmetals.in<br>orders@varmanmetals.in</p>
                 </div>
                 <div class="contact-item">
-                    <h4>Email Address</h4>
-                    <p>info@varmanmetals.in</p>
-                </div>
-                <div class="contact-item">
-                    <h4>Business Hours</h4>
-                    <p>Mon - Sat: 9AM - 7PM<br>Sunday: Closed</p>
+                    <h4>INDUSTRIAL HOURS</h4>
+                    <p>Mon - Sat: 8AM - 8PM<br>Sunday: Emergency Only</p>
                 </div>
             </div>
             
             <div class="contact-buttons">
-                <a href="https://wa.me/91XXXXXX1315" class="btn-primary" style="background: #25D366; border: none;">
-                    <i class="fab fa-whatsapp mr-2"></i> WhatsApp Inquiry
+                <a href="https://wa.me/916396811315" class="btn-industrial" style="background: #25D366; border: none;">
+                    <i class="fab fa-whatsapp mr-2"></i> WHATSAPP INQUIRY
                 </a>
-                <a href="tel:+91XXXXXX1315" class="btn-secondary" style="background: white; color: #0f3d8a;">
-                    <i class="fas fa-phone mr-2"></i> Call Directly
+                <a href="tel:+916396811315" class="btn-steel" style="background: white; color: #0a2a5a;">
+                    <i class="fas fa-phone mr-2"></i> CALL DIRECTLY
                 </a>
-                <a href="mailto:info@varmanmetals.in" class="btn-secondary" style="background: transparent; border: 2px solid white; color: white;">
-                    <i class="fas fa-envelope mr-2"></i> Send Email
+                <a href="mailto:info@varmanmetals.in" class="btn-steel" style="background: transparent; border: 2px solid white; color: white;">
+                    <i class="fas fa-envelope mr-2"></i> SEND EMAIL
                 </a>
             </div>
         </div>
@@ -1210,7 +1340,7 @@
         <div class="container-custom">
             <div class="footer-content">
                 <div class="footer-logo">VARMAN METALS</div>
-                <div class="footer-tagline">Global Waste Paper Importer | Premium OCC 11 & OCC 12 Supplier</div>
+                <div class="footer-tagline">INDUSTRIAL WASTE PAPER IMPORTER | PREMIUM OCC 11 & OCC 12 SUPPLIER</div>
                 
                 <div class="footer-social">
                     <a href="https://www.google.com/search?q=varman+metals" class="social-link" target="_blank">
@@ -1229,7 +1359,8 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 Varman Metals. All rights reserved. | Designed by Shiv Suri</p>
+                <p>&copy; 2026 VARMAN METALS. ALL RIGHTS RESERVED. | DESIGNED FOR INDUSTRIAL EXCELLENCE</p>
+                <p class="mt-2">DESIGNED BY SHIV SURI</p>
             </div>
         </div>
     </footer>
@@ -1261,24 +1392,52 @@
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                // Skip for external links or links with specific classes
+                if (this.getAttribute('href').startsWith('#') && 
+                    !this.classList.contains('btn-industrial') && 
+                    !this.classList.contains('btn-steel') &&
+                    this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        closeMobileMenu();
+                    }
+                }
+            });
+        });
+        
+        // Button functionality for call buttons
+        document.querySelectorAll('a[href^="tel:"]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === 'tel:+916396811315') {
+                    // You can add analytics or confirmation here
+                    console.log('Calling: +91 6396811315');
+                }
+            });
+        });
+        
+        // Button functionality for WhatsApp buttons
+        document.querySelectorAll('a[href^="https://wa.me/"]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === 'https://wa.me/916396811315') {
+                    // You can add analytics or confirmation here
+                    console.log('Opening WhatsApp: +91 6396811315');
                 }
             });
         });
         
         // Add animation to elements on scroll
         function animateOnScroll() {
-            const elements = document.querySelectorAll('.feature-card, .product-card, .mission-card');
+            const elements = document.querySelectorAll('.feature-card, .product-card, .mission-card, .contact-item');
             
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
@@ -1292,7 +1451,7 @@
         }
         
         // Set initial state for animated elements
-        document.querySelectorAll('.feature-card, .product-card, .mission-card').forEach(element => {
+        document.querySelectorAll('.feature-card, .product-card, .mission-card, .contact-item').forEach(element => {
             element.style.opacity = '0';
             element.style.transform = 'translateY(20px)';
             element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -1300,6 +1459,13 @@
         
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
+        
+        // Initialize animations on page load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                animateOnScroll();
+            }, 300);
+        });
     </script>
 </body>
 </html>
